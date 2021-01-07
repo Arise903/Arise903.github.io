@@ -1,6 +1,201 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>iOS 笔记 - 导航控制器 (Nav) 的 10 条经验</title>
+    <url>/2021/01/03/iOS%20%E7%AC%94%E8%AE%B0%20-%20%E5%AF%BC%E8%88%AA%E6%8E%A7%E5%88%B6%E5%99%A8%20(Nav)%20%E7%9A%84%2010%20%E6%9D%A1%E7%BB%8F%E9%AA%8C%20/</url>
+    <content><![CDATA[<ul>
+<li><ol>
+<li>导航控制器永远显示的是栈顶控制器的 view</li>
+</ol>
+</li>
+</ul>
+<ul>
+<li><ol start="2">
+<li>导航控制器中做界面之间的跳转必须取到导航控制器</li>
+</ol>
+</li>
+</ul>
+<ul>
+<li><ol start="3">
+<li>调用 pop 方法并不会马上销毁当前控制器</li>
+</ol>
+</li>
+</ul>
+<ul>
+<li>  4.popToViewController 使用注意点：传入进去的控制器必须是导航控制器栈里面的控制器</li>
+</ul>
+<ul>
+<li><ol start="5">
+<li>导航条的内容由栈顶控制器决定, 一个导航控制器只有一个导航条, 因此只能由一个控制器决定, 谁先显示在最外面, 谁就是栈顶控制器.</li>
+</ol>
+</li>
+</ul>
+<ul>
+<li><ol start="6">
+<li>在 iOS7 之后, 默认会把导航条上的按钮的图片渲染成蓝色.</li>
+</ol>
+</li>
+</ul>
+<ul>
+<li><ol start="7">
+<li>导航条上的子控件位置不需要我们管理, 只需要管理尺寸</li>
+</ol>
+</li>
+</ul>
+<ul>
+<li>  8.UINavigationItem: 是一个模型, 决定导航条的内容 (左边内容, 中间, 右边内容)</li>
+</ul>
+<ul>
+<li>  9.UIBarButtonItem: 是一个模型, 决定导航条上按钮的内容</li>
+</ul>
+<ul>
+<li><ol start="10">
+<li>以后只要看到 item, 通常都是苹果提供的模型, 只要改模型就能修改苹果的某些控件.</li>
+</ol>
+</li>
+</ul>
+]]></content>
+      <tags>
+        <tag>iOS 笔记</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>CocoaPods的使用和安装</title>
+    <url>/2021/01/03/CocoaPods%E7%9A%84%E4%BD%BF%E7%94%A8%E5%92%8C%E5%AE%89%E8%A3%85/</url>
+    <content><![CDATA[<h6 id="更新时间：2020-6-28"><a href="#更新时间：2020-6-28" class="headerlink" title="更新时间：2020.6.28"></a>更新时间：2020.6.28</h6><p>安装方式有两种，第一种使用普通的终端命令行去安装，第二种使用工具 Homebrew 去安装，homebrew 是一个安装包工具，可以安装 node、git、Cocoapods 等工具，相当好用，如何安装 Homebrew 移驾我的另一篇文章。<a href="https://www.jianshu.com/writer#/notebooks/46174561/notes/71162156/preview">Homebrew 是什么？以及使用</a></p>
+<h6 id="特别更新-特别重要（如果你遇到-pod-install、pod-update-无法更新下载）"><a href="#特别更新-特别重要（如果你遇到-pod-install、pod-update-无法更新下载）" class="headerlink" title="特别更新 + 特别重要（如果你遇到 pod install、pod update 无法更新下载）"></a>特别更新 + 特别重要（如果你遇到 pod install、pod update 无法更新下载）</h6><p>下面我要说的是卡了我一周的一个问题～<br>因为换了一台新设备，于是我满心欢心的安装 Homebrew、RVM、Ruby，接下来就是安装 Cocoapods，安装时候怎么都下载不下来 cocoapods 所需要 spec，一周后终于在一个博客上看到，Cocoapods 源改变了，以前依据 master 索引，现在是 CDN 的 Trunk 下的索引。Cocoapods 从 1.8 版本开始 CocoaPods 将默认源切换到了 CDN 服务，也就是不再将整个的 repo master 先下载下来才能正常使用 pods 而是用按需下载。pod install 和 pod update 速度都很快。怎么做呢？跟我来～</p>
+<ul>
+<li><ol>
+<li>删除原来的 master 索引，使用最新的 trunk 下的索引</li>
+</ol>
+</li>
+<li><ol start="2">
+<li>查看远程源列表: pod repo list</li>
+</ol>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">master</span><br><span class="line">          Type: git (master)</span><br><span class="line">          URL: https:&#x2F;&#x2F;github.com&#x2F;CocoaPods&#x2F;Specs.git</span><br><span class="line">          Path: &#x2F;Users&#x2F;iroot&#x2F;.cocoapods&#x2F;repos&#x2F;master</span><br><span class="line">    trunk</span><br><span class="line">          Type: CDN</span><br><span class="line">          URL: https:&#x2F;&#x2F;cdn.cocoapods.org&#x2F;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><ol start="3">
+<li>手动删除 master，前往路径：~/.cocoapods/repos/</li>
+</ol>
+</li>
+<li><ol start="4">
+<li>使用 “ping <a href="https://links.jianshu.com/go?to=https://raw.githubusercontent.com">https://raw.githubusercontent.com</a>“ 命令，ping 通后将显示的 ip 地址与域名追加到 hosts 文件最后一行，ip 地址根据实际显示地址添加即可</li>
+</ol>
+</li>
+<li><ol start="5">
+<li>先 cd 到 etc 文件夹，然后执行 open . 指令，注意有个点哦。</li>
+</ol>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ cd &#x2F;etc</span><br><span class="line">      $ &#x2F;etc open .</span><br><span class="line">      找到host文件，拷贝分到桌面，将</span><br><span class="line">      151.101.228.133 raw.githubusercontent.com追加到最后一行，保存。然后替换原有的host文件</span><br><span class="line"></span><br><span class="line">      sudo vi &#x2F;etc&#x2F;hosts</span><br><span class="line">      添加 199.232.4.133 raw.githubusercontent.com，这样我们不需要master这个文件，我们也能正常通过cdn的方式使用cocoapods了</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+
+<h1 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h1><h6 id="一、CocoaPods-简介"><a href="#一、CocoaPods-简介" class="headerlink" title="一、CocoaPods 简介"></a>一、CocoaPods 简介</h6><p>CocoaPods 是 IOS 项目上负责管理依赖的工具，即对第三方库的依赖。开发 iOS 项目不可避免地要使用第三方开源库，CocoaPods 的出现使得我们可以节省设置和更新第三方开源库的时间。</p>
+<h6 id="二、使用-Homebrew-工具安装-Ruby-CocoaPods"><a href="#二、使用-Homebrew-工具安装-Ruby-CocoaPods" class="headerlink" title="二、使用 Homebrew 工具安装 Ruby + CocoaPods"></a>二、使用 Homebrew 工具安装 Ruby + CocoaPods</h6><p>安装 ruby（这里使用 Homeview 来安装 ruby，安装 Homebrew 的方法在文章开头有链接）</p>
+<ul>
+<li>  1.brew install ruby（安装最新版的 ruby）</li>
+<li>  2.ruby –version（ruby 版本）</li>
+<li>  3.curl -sSL <a href="https://links.jianshu.com/go?to=https://get.rvm.io">https://get.rvm.io</a> | bash -s stable（RVM 是一个便捷的多版本 Ruby 环境的管理和切换工具. 安装它，官网：<a href="https://links.jianshu.com/go?to=https://rvm.io/">https://rvm.io/</a>）</li>
+<li>  4.rvm get stable（rvm 更新）</li>
+<li>  5.rvm –version（rvm 版本）</li>
+<li>  6.sudo gem update –system（gem 更新）</li>
+<li>  7.gem sources –remove <a href="https://links.jianshu.com/go?to=https://rubygems.org/">https://rubygems.org/</a>（移除之前的源）</li>
+<li>  8.gem sources –add <a href="https://links.jianshu.com/go?to=https://gems.ruby-china.com/">https://gems.ruby-china.com/</a>（设置新的源）</li>
+<li>  9.gem sources -l（查看当前源）</li>
+<li>10.gem –version（gem 版本）<br>  <code>注意：如果你第一次安装ruby你可以忽略345的命令，还有就是遇到You can try adding it manually in `/Users/XXX/.cocoapods/repos` 这种问题直接去github下载然后放到路径下就好了，是因为文件太大网不好。</code></li>
+</ul>
+<p>安装 cocoapods</p>
+<ul>
+<li>  1.sudo gem install -n /usr/local/bin cocoapods（安装 cocoapods）</li>
+<li>  2.pod setup（安装本地库）</li>
+<li>  3.pod repo update（更新本地库）</li>
+<li>  4.pod –version（pod 版本）</li>
+</ul>
+<p>卸载 cocoapods</p>
+<ul>
+<li>  1.sudo gem uninstall -n /user/local/bin cocoapods</li>
+</ul>
+<h6 id="三、使用终端命令安装-Ruby-CocoaPods"><a href="#三、使用终端命令安装-Ruby-CocoaPods" class="headerlink" title="三、使用终端命令安装 Ruby + CocoaPods"></a>三、使用终端命令安装 Ruby + CocoaPods</h6><p>安装 ruby</p>
+<ul>
+<li>  1.ruby -v（查看当前 ruby 版本）</li>
+<li>  2.gem sources -l（查看当前镜像地址）</li>
+<li>  3.gem sources –remove <a href="https://links.jianshu.com/go?to=https://rubygems.org/">https://rubygems.org/</a>（移除原本镜像地址）</li>
+<li>  4.gem sources -a <a href="https://links.jianshu.com/go?to=https://gems.ruby-china.com">https://gems.ruby-china.com</a>（替换镜像，防止被翻）</li>
+<li>  5.gem sources -l（检查替换镜像是否成功）</li>
+</ul>
+<p>安装 Cocoapods</p>
+<ul>
+<li>  1.sudo gem install cocoapods</li>
+</ul>
+<h6 id="四、安装好-Cocoapods-的使用"><a href="#四、安装好-Cocoapods-的使用" class="headerlink" title="四、安装好 Cocoapods 的使用"></a>四、安装好 Cocoapods 的使用</h6><ul>
+<li><ol>
+<li>新建一个项目，假设项目名称为 HelloWord</li>
+</ol>
+</li>
+<li><ol start="2">
+<li>终端输入：cd HelloWord 文件路径</li>
+</ol>
+</li>
+<li><ol start="3">
+<li>创建 Podfile 配置文件，终端输入：vim Podfile</li>
+</ol>
+</li>
+<li><ol start="4">
+<li>接着键盘输入 i 进入编辑模式，继续输入以下内容：</li>
+</ol>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">platform:ios, &#39;8.0&#39;</span><br><span class="line">target &#39;HelloWord&#39;</span><br><span class="line">pod &#39;Masonry&#39;, &#39;~&gt; 1.1.0&#39;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><ol start="5">
+<li>键盘按下 ESC 键，然后输入 “:wq” 进入 vim 命令模式，回车</li>
+</ol>
+</li>
+<li><ol start="6">
+<li>终端继续输入 pod install，到此恭喜你，你安装好了 CocoaPods，并且导入了一个第三方库 Masonry，以后打开该项目只需找到 HelloWord 文件夹下后缀名为. xcworkspace 打开即可。</li>
+</ol>
+</li>
+</ul>
+<h6 id="五、CocoaPods-命令集合"><a href="#五、CocoaPods-命令集合" class="headerlink" title="五、CocoaPods 命令集合"></a>五、CocoaPods 命令集合</h6><p>1.pod init ：初始化<br>2.pod install ：安装库<br>3.pod update ：更新库<br>4.pod search XXX ：查找所需三方库<br>5.gem install cocoapods –pre ：更新 Cocoapods<br>6.pod env ：查看已经安装的 cocoapods 版本<br>7.pod outdated ：查看 Podfile 文件中的依赖库的最新版本</p>
+<h6 id="六、Cocoapods-使用过程中遇到的问题以及错误-ERROR（持续更新）"><a href="#六、Cocoapods-使用过程中遇到的问题以及错误-ERROR（持续更新）" class="headerlink" title="六、Cocoapods 使用过程中遇到的问题以及错误 ERROR（持续更新）"></a>六、Cocoapods 使用过程中遇到的问题以及错误 ERROR（持续更新）</h6><p>1.<code>[!] Invalid `Podfile` file: syntax error, unexpected end, expecting end-of-input</code><br>解决方案：这是因为你 Podfile 文件内容输入错误，好好检查一下吧～<br>2.<code>Specs satisfying the `Kingfisher (~&gt; 5.13.3)` dependency were found, but they required a higher minimum deployment target.</code><br>解决方案：原因是因为三方库本身支持最低版本是 10.0，而我设置了 8.0 因此报错<br>3.<code>[!] Unable to find a specification for `XXX`You have either: * out-of-date source repos which you can update with `pod repo update` or with `pod install --repo-update`.* mistyped the name or version.* not added the source repo that hosts the Podspec to your Podfile.</code><br>解决方案：由于本地 repo 中没有该库或者该版本导致的，执行 pod repo update 即可，你会发现 pod repo update 真的很慢，加快速的就是更新某个库 pod repo update 后拼接库的路径即可 XXX.podspec.json(例如：repo update ~/.cocoapods/repos//master/Specs)</p>
+<h6 id="七、Cocoapods-相关知识点（持续更新）"><a href="#七、Cocoapods-相关知识点（持续更新）" class="headerlink" title="七、Cocoapods 相关知识点（持续更新）"></a>七、Cocoapods 相关知识点（持续更新）</h6><ul>
+<li>  1.pod install 和 pod update 的区别以及使用场景:</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">pod install：会去检查podfile.lock是否已经包含该库，如果包含则继续判断是否指定版本，如果指定版本就去检查podfile.lock中保存的版本是否与新指定的相同，相同则跳过，不相同则更新，如果没有指定版本则不检查更新直接跳过，如果不包含该库则去下载该库并将版本保存在podfile.lock文件中。每次当pod install 命令运行，并下载安装新的pods的时候，他会在Podfile.lock中为每个pod写入它安装的版本。此文件跟踪每一个已安装的版本，并且锁定这些版本。当运行pod install 的时候它仅仅解析那些Podfile.lock中位列出的依赖关系。对于Podfile.lock中列出的pods，它仅仅会下载指明的版本，不会去检查是否有新版本可用。对于Podfile.lock中未列出的pods，他会搜索与Podfile中内容相匹配的版本 (例如 pod &#39;MyPod&#39;, &#39;~&gt;1.2&#39;)。</span><br><span class="line">pod update：这个命令会忽略Podfile.lock中的记录，直接去找符合Podfile文件中的该依赖库的约束版本（无约束的话就是最新版本）。一般在你想要更新pods到一个新的版本的时候使用。当运行pod update PODNAME时，CocoaPods将尝试查找PODNAME的更新版本，而不考虑Podfile.lock中列出的版本。 它会将pod更新为可能的最新版本（只要它与Podfile中的版本限制相匹配）。如果运行pod更新没有pod名称，CocoaPods将更新您Podfile中列出的每个pod到最新的版本。</span><br><span class="line"></span><br><span class="line">pod install使用场景：</span><br><span class="line">  a.新创建工程，第一次引入pod库时</span><br><span class="line">  b.修改了Podfile文件，添加或删除了所依赖的pod库时。</span><br><span class="line">  c.团队中新人拉取工程后获取pod库时。</span><br><span class="line">  d.团队中，不同开发者要同步对pod库的依赖时(有人改变了依赖关系，删除或增加pod时。还有就是有人执行了pod update,此时他的Podfile.lock文件中的跟踪版本就已经变更，此时，其他人只要pod install就能更新为和Podfile.lock文件中的版本。还有就是如果Podfile和Podfile.lock的记录相冲突，Podfile文件中指定了低于Podfile.lock中记录的版本。会以Podfile文件为准，并在获取成功后更新Podfile.lock文件。)</span><br><span class="line"></span><br><span class="line">pod update使用场景：</span><br><span class="line">  a.一般在你想要更新pods到一个新的版本的时候使用。</span><br></pre></td></tr></table></figure>
+<ul>
+<li>  2.podfile 指定版本号时的逻辑运算符</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Besides no version, or a specific one, it is also possible touse logical operators:</span><br><span class="line">    &#39;&gt; 0.1&#39;    Any version higher than 0.1         0.1以上</span><br><span class="line">    &#39;&gt;&#x3D; 0.1&#39;   Version 0.1 and any higher version  0.1以上，包括0.1</span><br><span class="line">    &#39;&lt; 0.1&#39;    Any version lower than 0.1          0.1以下</span><br><span class="line">    &#39;&lt;&#x3D; 0.1&#39;   Version 0.1 and any lower version   0.1以下，包括0.1</span><br><span class="line">    In addition to the logic operators CocoaPods has an optimisicoperator ~&gt;:</span><br><span class="line">    &#39;~&gt; 0.1.2&#39; Version 0.1.2 and the versions up to 0.2, not including 0.2 and higher  0.2以下(不含0.2)，0.1.2以上（含0.1.2）</span><br><span class="line">    &#39;~&gt; 0.1&#39; Version 0.1 and the versions up to 1.0, not including 1.0 and higher      1.0以下(不含1.0)，0.1以上（含0.1）</span><br><span class="line">    &#39;~&gt; 0&#39; Version 0 and higher, this is basically the same as not having it.          0和以上，等于没有此约束</span><br></pre></td></tr></table></figure>
+<ul>
+<li>3.Podfile.lock<br>  a.Podfile.lock 这个文件是我们新建 Podfile 文件后会自动生成的一个文件，里面存储了我们已经安装的依赖库的版本。<br>  b. 当我们第一次运行 Podfile 时，如果对依赖库不指定版本的话，cocoapods 会安装最新的版本，同时将 pods 的版本记录在 Podfile.lock 文件中。这个文件会保持对每个 pod 已安装版本的跟踪，并且锁定这些版本。再执行 pod install 的话，只会处理没有记录在 Podfile.lock 中的依赖库，会查找匹配 Podfile 中描述的版本。对于已经记录在 Podfile.lock 的依赖库，会下载 Podfile.lock 文件中记录的版本，而不会检查是否有更新。当然，如果你约束了 pods 的版本的话，会按照你指定的版本进行安装，同时也会更新 Podfile.lock 记录的信息。<br>  c.Podfile.lock 内部</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">PODS:</span><br><span class="line">  - Masonry (1.1.0)</span><br><span class="line">DEPENDENCIES:</span><br><span class="line">  - Masonry (~&gt; 1.1.0)</span><br><span class="line">SPEC REPOS:</span><br><span class="line">  trunk:</span><br><span class="line">    - Masonry</span><br><span class="line">  SPEC CHECKSUMS:</span><br><span class="line">    Masonry: 678fab65091a9290e40e2832a55e7ab731aad201</span><br><span class="line">    PODFILE CHECKSUM: 7a5a6c829f4d2252e3e3d116ab9757a3b270ed8a</span><br><span class="line">    COCOAPODS: 1.9.3</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>4.Cocoapods 原理<br>  是将所有的依赖库都放到另一个名为 Pods 的项目中, 然而让主项目依赖 Pods 项目, 这样, 源码管理工作任务从主项目移到了 Pods 项目中.<br>  a.Pods 项目最终会编译成一个名为 libPods.a 的文件, 主项目只要依赖这个. a 文件即可.<br>  b. 对于资源文件, CocoaPods 提供了一个名为 Pods-resources.sh 的 bash 脚步, 该脚本在每次项目, 编译的时候都会执行, 将第三方库的各种资源文件复制到目标目录中.<br>  c.CocoaPods 通过一个名为 Pods.xcconfig 的文件在编译设置所有的依赖和参数</p>
+</li>
+<li><p>5.Cocoapods 下载原理<br>  s.source = {:git =&gt; ‘<a href="https://links.jianshu.com/go?to=mailto:git@gitlab.xxx.net">git@gitlab.xxx.net</a>:ios-thirdpartservice/xxxreact.git’, :tag =&gt;’1.0.0’ }<br>  当使用 Cocoapods 导入私有库时，Cocoapods 先是根据: git =&gt; ‘<a href="https://links.jianshu.com/go?to=mailto:git@gitlab.xxx.net">git@gitlab.xxx.net</a>:ios-thirdpartservice/xxxreact.git’找到对应的 git 仓库，然后根据: tag =&gt; ‘1.0.0’定位到对应 tag 的提交（如果没有注明 Pod 依赖库版本则定位到最后一次的提交），然后在这次提交中检索缀为. podspec 的文件（文件可以随便命名）。找到 podspec 文件后先要验证 <a href="https://links.jianshu.com/go?to=http://s.name">s.name</a> 是否与 Podfile 中的一致，如果不一致则 install 时会报错：[!]Unable to find a specification for ‘React’. 验证成功后，就会根据 Podspec 中的 s.source_files 找到需要导入的代码文件，并通过其他的的数据找到对应的配置文件或资源文件等。最后，将其下载到本地项目中。如果是共有库，这些原理也相同。只是共有库要将 podspec 文件上传到 cocoapods。在导入的时候通过名字 React 去 cocoapods 匹配对应的 podspec，然后根据 s.source 去找到对应的仓库和对应的版本，然后会再去匹配新的 podspec，后边的步骤就完全相同了。</p>
+</li>
+<li><p>6.Cocoapods 集成原理<br>  当所有的依赖库都下载完后，Cocoapods 会将所有的依赖库都放到另一个名为 Pods 的项目中，然后让主项目依赖 Pods 项目。这样，源码管理工作都从主目录移到了 Pods 项目中。Pods 项目最终会编译成为一个名为 libPods.a 的文件，主项目只要依赖这个. a 文件即可。对于资源文件，Cocoapods 提供了一个名为 Pods-resource.sh 的 bash 脚本，该脚本在每次项目编译的时候都会执行，将 Pods 依赖库的各种资源文件复制到目标目录中。Cocoapods 还通过一个名为 Pods.xcconfig 的文件来在编译时设置所有的依赖和参数。</p>
+</li>
+<li><p>7.Cocoapods 版本控制原理<br>  当执行完 pod install 之后，cocoapods 会生成一个 podfile.lock 的文件。podfile.lock 文件最大的用处在于多人开发。如果你没有在 podfile 中指定 pods 版本 pod ‘React’，那么默认为获取当前 React 依赖库的最新版本。当团队中的某个人执行完 pod install 命令后，生产的 podfile.lock 文件就记录下了当时最新 pods 依赖库的版本，这时团队中的其他人 check 下来这份包含 podfile.lock 文件的工程以后，再去执行 pod install 命令时，获取下来的 pods 依赖库的版本和最开始用户获取到的版本一致。如果没有 podfile.lock 文件，后续所有用户执行 pod install 命令都会获取最新版本的 React, 这就可能造成一个团队使用的依赖库版本不一致，这对团队协作来说绝对是个灾难。在这种情况下，如果团队想使用当前最新版本的 React 依赖库，有两种方案：1、更改 podfile，使其指向最新版本的 React 依赖库 2、执行 pod update 命令；鉴于 podfile.lock 文件对团队协作如此重要，所以应该加入到版本控制里面。</p>
+</li>
+<li><p>8.pod 管理的第三方库有 MJExtension.Framework 和 SDWebImage.Framework, 如何在 MJExtension 的某个类中使用来自 SDWebImage 库的类<br>  a. 在 pod 中 找到 MJExtension, 在 Build Phases 中 导入 SDWebImage.Framework<br>  b. 在 pod 的 MJExtension.Framework 中, 找到 Build Settings 配置 Framework Search Paths 的 Debug 和 Release, 添加 <img src="data:image/svg+xml;base64,PHN2ZyB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgd2lkdGg9IjEzLjU4NGV4IiBoZWlnaHQ9IjMuMzQzZXgiIHN0eWxlPSJ2ZXJ0aWNhbC1hbGlnbjogLTEuMTcxZXg7IiB2aWV3Qm94PSIwIC05MzQuOSA1ODQ4LjYgMTQzOS4yIiByb2xlPSJpbWciIGZvY3VzYWJsZT0iZmFsc2UiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgYXJpYS1sYWJlbGxlZGJ5PSJNYXRoSmF4LVNWRy0xLVRpdGxlIj4KPHRpdGxlIGlkPSJNYXRoSmF4LVNWRy0xLVRpdGxlIj5pbmhlcml0ZWQg5ZKMICI8L3RpdGxlPgo8ZGVmcyBhcmlhLWhpZGRlbj0idHJ1ZSI+CjxwYXRoIHN0cm9rZS13aWR0aD0iMSIgaWQ9IkUxLU1KTUFUSEktNjkiIGQ9Ik0xODQgNjAwUTE4NCA2MjQgMjAzIDY0MlQyNDcgNjYxUTI2NSA2NjEgMjc3IDY0OVQyOTAgNjE5UTI5MCA1OTYgMjcwIDU3N1QyMjYgNTU3UTIxMSA1NTcgMTk4IDU2N1QxODQgNjAwWk0yMSAyODdRMjEgMjk1IDMwIDMxOFQ1NCAzNjlUOTggNDIwVDE1OCA0NDJRMTk3IDQ0MiAyMjMgNDE5VDI1MCAzNTdRMjUwIDM0MCAyMzYgMzAxVDE5NiAxOTZUMTU0IDgzUTE0OSA2MSAxNDkgNTFRMTQ5IDI2IDE2NiAyNlExNzUgMjYgMTg1IDI5VDIwOCA0M1QyMzUgNzhUMjYwIDEzN1EyNjMgMTQ5IDI2NSAxNTFUMjgyIDE1M1EzMDIgMTUzIDMwMiAxNDNRMzAyIDEzNSAyOTMgMTEyVDI2OCA2MVQyMjMgMTFUMTYxIC0xMVExMjkgLTExIDEwMiAxMFQ3NCA3NFE3NCA5MSA3OSAxMDZUMTIyIDIyMFExNjAgMzIxIDE2NiAzNDFUMTczIDM4MFExNzMgNDA0IDE1NiA0MDRIMTU0UTEyNCA0MDQgOTkgMzcxVDYxIDI4N1E2MCAyODYgNTkgMjg0VDU4IDI4MVQ1NiAyNzlUNTMgMjc4VDQ5IDI3OFQ0MSAyNzhIMjdRMjEgMjg0IDIxIDI4N1oiPjwvcGF0aD4KPHBhdGggc3Ryb2tlLXdpZHRoPSIxIiBpZD0iRTEtTUpNQVRISS02RSIgZD0iTTIxIDI4N1EyMiAyOTMgMjQgMzAzVDM2IDM0MVQ1NiAzODhUODkgNDI1VDEzNSA0NDJRMTcxIDQ0MiAxOTUgNDI0VDIyNSAzOTBUMjMxIDM2OVEyMzEgMzY3IDIzMiAzNjdMMjQzIDM3OFEzMDQgNDQyIDM4MiA0NDJRNDM2IDQ0MiA0NjkgNDE1VDUwMyAzMzZUNDY1IDE3OVQ0MjcgNTJRNDI3IDI2IDQ0NCAyNlE0NTAgMjYgNDUzIDI3UTQ4MiAzMiA1MDUgNjVUNTQwIDE0NVE1NDIgMTUzIDU2MCAxNTNRNTgwIDE1MyA1ODAgMTQ1UTU4MCAxNDQgNTc2IDEzMFE1NjggMTAxIDU1NCA3M1Q1MDggMTdUNDM5IC0xMFEzOTIgLTEwIDM3MSAxN1QzNTAgNzNRMzUwIDkyIDM4NiAxOTNUNDIzIDM0NVE0MjMgNDA0IDM3OSA0MDRIMzc0UTI4OCA0MDQgMjI5IDMwM0wyMjIgMjkxTDE4OSAxNTdRMTU2IDI2IDE1MSAxNlExMzggLTExIDEwOCAtMTFROTUgLTExIDg3IC01VDc2IDdUNzQgMTdRNzQgMzAgMTEyIDE4MFQxNTIgMzQzUTE1MyAzNDggMTUzIDM2NlExNTMgNDA1IDEyOSA0MDVROTEgNDA1IDY2IDMwNVE2MCAyODUgNjAgMjg0UTU4IDI3OCA0MSAyNzhIMjdRMjEgMjg0IDIxIDI4N1oiPjwvcGF0aD4KPHBhdGggc3Ryb2tlLXdpZHRoPSIxIiBpZD0iRTEtTUpNQVRISS02OCIgZD0iTTEzNyA2ODNRMTM4IDY4MyAyMDkgNjg4VDI4MiA2OTRRMjk0IDY5NCAyOTQgNjg1UTI5NCA2NzQgMjU4IDUzNFEyMjAgMzg2IDIyMCAzODNRMjIwIDM4MSAyMjcgMzg4UTI4OCA0NDIgMzU3IDQ0MlE0MTEgNDQyIDQ0NCA0MTVUNDc4IDMzNlE0NzggMjg1IDQ0MCAxNzhUNDAyIDUwUTQwMyAzNiA0MDcgMzFUNDIyIDI2UTQ1MCAyNiA0NzQgNTZUNTEzIDEzOFE1MTYgMTQ5IDUxOSAxNTFUNTM1IDE1M1E1NTUgMTUzIDU1NSAxNDVRNTU1IDE0NCA1NTEgMTMwUTUzNSA3MSA1MDAgMzNRNDY2IC0xMCA0MTkgLTEwSDQxNFEzNjcgLTEwIDM0NiAxN1QzMjUgNzRRMzI1IDkwIDM2MSAxOTJUMzk4IDM0NVEzOTggNDA0IDM1NCA0MDRIMzQ5UTI2NiA0MDQgMjA1IDMwNkwxOTggMjkzTDE2NCAxNThRMTMyIDI4IDEyNyAxNlExMTQgLTExIDgzIC0xMVE2OSAtMTEgNTkgLTJUNDggMTZRNDggMzAgMTIxIDMyMEwxOTUgNjE2UTE5NSA2MjkgMTg4IDYzMlQxNDkgNjM3SDEyOFExMjIgNjQzIDEyMiA2NDVUMTI0IDY2NFExMjkgNjgzIDEzNyA2ODNaIj48L3BhdGg+CjxwYXRoIHN0cm9rZS13aWR0aD0iMSIgaWQ9IkUxLU1KTUFUSEktNjUiIGQ9Ik0zOSAxNjhRMzkgMjI1IDU4IDI3MlQxMDcgMzUwVDE3NCA0MDJUMjQ0IDQzM1QzMDcgNDQySDMxMFEzNTUgNDQyIDM4OCA0MjBUNDIxIDM1NVE0MjEgMjY1IDMxMCAyMzdRMjYxIDIyNCAxNzYgMjIzUTEzOSAyMjMgMTM4IDIyMVExMzggMjE5IDEzMiAxODZUMTI1IDEyOFExMjUgODEgMTQ2IDU0VDIwOSAyNlQzMDIgNDVUMzk0IDExMVE0MDMgMTIxIDQwNiAxMjFRNDEwIDEyMSA0MTkgMTEyVDQyOSA5OFQ0MjAgODJUMzkwIDU1VDM0NCAyNFQyODEgLTFUMjA1IC0xMVExMjYgLTExIDgzIDQyVDM5IDE2OFpNMzczIDM1M1EzNjcgNDA1IDMwNSA0MDVRMjcyIDQwNSAyNDQgMzkxVDE5OSAzNTdUMTcwIDMxNlQxNTQgMjgwVDE0OSAyNjFRMTQ5IDI2MCAxNjkgMjYwUTI4MiAyNjAgMzI3IDI4NFQzNzMgMzUzWiI+PC9wYXRoPgo8cGF0aCBzdHJva2Utd2lkdGg9IjEiIGlkPSJFMS1NSk1BVEhJLTcyIiBkPSJNMjEgMjg3UTIyIDI5MCAyMyAyOTVUMjggMzE3VDM4IDM0OFQ1MyAzODFUNzMgNDExVDk5IDQzM1QxMzIgNDQyUTE2MSA0NDIgMTgzIDQzMFQyMTQgNDA4VDIyNSAzODhRMjI3IDM4MiAyMjggMzgyVDIzNiAzODlRMjg0IDQ0MSAzNDcgNDQxSDM1MFEzOTggNDQxIDQyMiA0MDBRNDMwIDM4MSA0MzAgMzYzUTQzMCAzMzMgNDE3IDMxNVQzOTEgMjkyVDM2NiAyODhRMzQ2IDI4OCAzMzQgMjk5VDMyMiAzMjhRMzIyIDM3NiAzNzggMzkyUTM1NiA0MDUgMzQyIDQwNVEyODYgNDA1IDIzOSAzMzFRMjI5IDMxNSAyMjQgMjk4VDE5MCAxNjVRMTU2IDI1IDE1MSAxNlExMzggLTExIDEwOCAtMTFROTUgLTExIDg3IC01VDc2IDdUNzQgMTdRNzQgMzAgMTE0IDE4OVQxNTQgMzY2UTE1NCA0MDUgMTI4IDQwNVExMDcgNDA1IDkyIDM3N1Q2OCAzMTZUNTcgMjgwUTU1IDI3OCA0MSAyNzhIMjdRMjEgMjg0IDIxIDI4N1oiPjwvcGF0aD4KPHBhdGggc3Ryb2tlLXdpZHRoPSIxIiBpZD0iRTEtTUpNQVRISS03NCIgZD0iTTI2IDM4NVExOSAzOTIgMTkgMzk1UTE5IDM5OSAyMiA0MTFUMjcgNDI1UTI5IDQzMCAzNiA0MzBUODcgNDMxSDE0MEwxNTkgNTExUTE2MiA1MjIgMTY2IDU0MFQxNzMgNTY2VDE3OSA1ODZUMTg3IDYwM1QxOTcgNjE1VDIxMSA2MjRUMjI5IDYyNlEyNDcgNjI1IDI1NCA2MTVUMjYxIDU5NlEyNjEgNTg5IDI1MiA1NDlUMjMyIDQ3MEwyMjIgNDMzUTIyMiA0MzEgMjcyIDQzMUgzMjNRMzMwIDQyNCAzMzAgNDIwUTMzMCAzOTggMzE3IDM4NUgyMTBMMTc0IDI0MFExMzUgODAgMTM1IDY4UTEzNSAyNiAxNjIgMjZRMTk3IDI2IDIzMCA2MFQyODMgMTQ0UTI4NSAxNTAgMjg4IDE1MVQzMDMgMTUzSDMwN1EzMjIgMTUzIDMyMiAxNDVRMzIyIDE0MiAzMTkgMTMzUTMxNCAxMTcgMzAxIDk1VDI2NyA0OFQyMTYgNlQxNTUgLTExUTEyNSAtMTEgOTggNFQ1OSA1NlE1NyA2NCA1NyA4M1YxMDFMOTIgMjQxUTEyNyAzODIgMTI4IDM4M1ExMjggMzg1IDc3IDM4NUgyNloiPjwvcGF0aD4KPHBhdGggc3Ryb2tlLXdpZHRoPSIxIiBpZD0iRTEtTUpNQVRISS02NCIgZD0iTTM2NiA2ODNRMzY3IDY4MyA0MzggNjg4VDUxMSA2OTRRNTIzIDY5NCA1MjMgNjg2UTUyMyA2NzkgNDUwIDM4NFQzNzUgODNUMzc0IDY4UTM3NCAyNiA0MDIgMjZRNDExIDI3IDQyMiAzNVE0NDMgNTUgNDYzIDEzMVE0NjkgMTUxIDQ3MyAxNTJRNDc1IDE1MyA0ODMgMTUzSDQ4N0g0OTFRNTA2IDE1MyA1MDYgMTQ1UTUwNiAxNDAgNTAzIDEyOVE0OTAgNzkgNDczIDQ4VDQ0NSA4VDQxNyAtOFE0MDkgLTEwIDM5MyAtMTBRMzU5IC0xMCAzMzYgNVQzMDYgMzZMMzAwIDUxUTI5OSA1MiAyOTYgNTBRMjk0IDQ4IDI5MiA0NlEyMzMgLTEwIDE3MiAtMTBRMTE3IC0xMCA3NSAzMFQzMyAxNTdRMzMgMjA1IDUzIDI1NVQxMDEgMzQxUTE0OCAzOTggMTk1IDQyMFQyODAgNDQyUTMzNiA0NDIgMzY0IDQwMFEzNjkgMzk0IDM2OSAzOTZRMzcwIDQwMCAzOTYgNTA1VDQyNCA2MTZRNDI0IDYyOSA0MTcgNjMyVDM3OCA2MzdIMzU3UTM1MSA2NDMgMzUxIDY0NVQzNTMgNjY0UTM1OCA2ODMgMzY2IDY4M1pNMzUyIDMyNlEzMjkgNDA1IDI3NyA0MDVRMjQyIDQwNSAyMTAgMzc0VDE2MCAyOTNRMTMxIDIxNCAxMTkgMTI5UTExOSAxMjYgMTE5IDExOFQxMTggMTA2UTExOCA2MSAxMzYgNDRUMTc5IDI2UTIzMyAyNiAyOTAgOThMMjk4IDEwOUwzNTIgMzI2WiI+PC9wYXRoPgo8cGF0aCBzdHJva2Utd2lkdGg9IjEiIGlkPSJFMS1NSk1BSU4tMjIiIGQ9Ik0zNCA2MzRRMzQgNjU5IDUwIDY3NlQ5MyA2OTRRMTIxIDY5NCAxNDQgNjY4VDE2OCA1NzlRMTY4IDUyNSAxNDYgNDc2VDEwMSA0MDNUNzMgMzc5UTY5IDM3OSA2MCAzODhUNTAgNDAxUTUwIDQwNCA2MiA0MTdUODggNDQ4VDExNiA1MDBUMTMxIDU3MlExMzEgNTg0IDEzMCA1ODRUMTI1IDU4MVQxMTIgNTc2VDk0IDU3M1E2OSA1NzMgNTIgNTkwVDM0IDYzNFpNMjM4IDYzNFEyMzggNjU5IDI1NCA2NzZUMjk3IDY5NFEzMjUgNjk0IDM0OCA2NjhUMzcyIDU3OVEzNzIgNTI1IDM1MCA0NzZUMzA1IDQwM1QyNzcgMzc5UTI3MyAzNzkgMjY0IDM4OFQyNTQgNDAxUTI1NCA0MDQgMjY2IDQxN1QyOTIgNDQ4VDMyMCA1MDBUMzM1IDU3MlEzMzUgNTg0IDMzNCA1ODRUMzI5IDU4MVQzMTYgNTc2VDI5OCA1NzNRMjczIDU3MyAyNTYgNTkwVDIzOCA2MzRaIj48L3BhdGg+CjwvZGVmcz4KPGcgc3Ryb2tlPSJjdXJyZW50Q29sb3IiIGZpbGw9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIwIiB0cmFuc2Zvcm09Im1hdHJpeCgxIDAgMCAtMSAwIDApIiBhcmlhLWhpZGRlbj0idHJ1ZSI+CiA8dXNlIHhsaW5rOmhyZWY9IiNFMS1NSk1BVEhJLTY5IiB4PSIwIiB5PSIwIj48L3VzZT4KIDx1c2UgeGxpbms6aHJlZj0iI0UxLU1KTUFUSEktNkUiIHg9IjM0NSIgeT0iMCI+PC91c2U+CiA8dXNlIHhsaW5rOmhyZWY9IiNFMS1NSk1BVEhJLTY4IiB4PSI5NDYiIHk9IjAiPjwvdXNlPgogPHVzZSB4bGluazpocmVmPSIjRTEtTUpNQVRISS02NSIgeD0iMTUyMiIgeT0iMCI+PC91c2U+CiA8dXNlIHhsaW5rOmhyZWY9IiNFMS1NSk1BVEhJLTcyIiB4PSIxOTg5IiB5PSIwIj48L3VzZT4KIDx1c2UgeGxpbms6aHJlZj0iI0UxLU1KTUFUSEktNjkiIHg9IjI0NDAiIHk9IjAiPjwvdXNlPgogPHVzZSB4bGluazpocmVmPSIjRTEtTUpNQVRISS03NCIgeD0iMjc4NiIgeT0iMCI+PC91c2U+CiA8dXNlIHhsaW5rOmhyZWY9IiNFMS1NSk1BVEhJLTY1IiB4PSIzMTQ3IiB5PSIwIj48L3VzZT4KIDx1c2UgeGxpbms6aHJlZj0iI0UxLU1KTUFUSEktNjQiIHg9IjM2MTQiIHk9IjAiPjwvdXNlPgo8ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSg0MTM3LDApIj4KPHRleHQgZm9udC1mYW1pbHk9Im1vbm9zcGFjZSIgc3Ryb2tlPSJub25lIiB0cmFuc2Zvcm09InNjYWxlKDcxLjc1OSkgbWF0cml4KDEgMCAwIC0xIDAgMCkiPuWSjDwvdGV4dD4KPC9nPgogPHVzZSB4bGluazpocmVmPSIjRTEtTUpNQUlOLTIyIiB4PSI1MzQ4IiB5PSIwIj48L3VzZT4KPC9nPgo8L3N2Zz4=">PODS_CONFIGURATION_BUILD_DIR/SDWebImage”<br>  c. 在 pod 的 MJExtension.xcconfig 中 添加 ： FRAMEWORK_SEARCH_PATHS = <img src="data:image/svg+xml;base64,PHN2ZyB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgd2lkdGg9IjExLjQxN2V4IiBoZWlnaHQ9IjIuMTc2ZXgiIHN0eWxlPSJ2ZXJ0aWNhbC1hbGlnbjogLTAuMzM4ZXg7IiB2aWV3Qm94PSIwIC03OTEuMyA0OTE1LjggOTM2LjkiIHJvbGU9ImltZyIgZm9jdXNhYmxlPSJmYWxzZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiBhcmlhLWxhYmVsbGVkYnk9Ik1hdGhKYXgtU1ZHLTEtVGl0bGUiPgo8dGl0bGUgaWQ9Ik1hdGhKYXgtU1ZHLTEtVGl0bGUiPmluaGVyaXRlZCAiPC90aXRsZT4KPGRlZnMgYXJpYS1oaWRkZW49InRydWUiPgo8cGF0aCBzdHJva2Utd2lkdGg9IjEiIGlkPSJFMS1NSk1BVEhJLTY5IiBkPSJNMTg0IDYwMFExODQgNjI0IDIwMyA2NDJUMjQ3IDY2MVEyNjUgNjYxIDI3NyA2NDlUMjkwIDYxOVEyOTAgNTk2IDI3MCA1NzdUMjI2IDU1N1EyMTEgNTU3IDE5OCA1NjdUMTg0IDYwMFpNMjEgMjg3UTIxIDI5NSAzMCAzMThUNTQgMzY5VDk4IDQyMFQxNTggNDQyUTE5NyA0NDIgMjIzIDQxOVQyNTAgMzU3UTI1MCAzNDAgMjM2IDMwMVQxOTYgMTk2VDE1NCA4M1ExNDkgNjEgMTQ5IDUxUTE0OSAyNiAxNjYgMjZRMTc1IDI2IDE4NSAyOVQyMDggNDNUMjM1IDc4VDI2MCAxMzdRMjYzIDE0OSAyNjUgMTUxVDI4MiAxNTNRMzAyIDE1MyAzMDIgMTQzUTMwMiAxMzUgMjkzIDExMlQyNjggNjFUMjIzIDExVDE2MSAtMTFRMTI5IC0xMSAxMDIgMTBUNzQgNzRRNzQgOTEgNzkgMTA2VDEyMiAyMjBRMTYwIDMyMSAxNjYgMzQxVDE3MyAzODBRMTczIDQwNCAxNTYgNDA0SDE1NFExMjQgNDA0IDk5IDM3MVQ2MSAyODdRNjAgMjg2IDU5IDI4NFQ1OCAyODFUNTYgMjc5VDUzIDI3OFQ0OSAyNzhUNDEgMjc4SDI3UTIxIDI4NCAyMSAyODdaIj48L3BhdGg+CjxwYXRoIHN0cm9rZS13aWR0aD0iMSIgaWQ9IkUxLU1KTUFUSEktNkUiIGQ9Ik0yMSAyODdRMjIgMjkzIDI0IDMwM1QzNiAzNDFUNTYgMzg4VDg5IDQyNVQxMzUgNDQyUTE3MSA0NDIgMTk1IDQyNFQyMjUgMzkwVDIzMSAzNjlRMjMxIDM2NyAyMzIgMzY3TDI0MyAzNzhRMzA0IDQ0MiAzODIgNDQyUTQzNiA0NDIgNDY5IDQxNVQ1MDMgMzM2VDQ2NSAxNzlUNDI3IDUyUTQyNyAyNiA0NDQgMjZRNDUwIDI2IDQ1MyAyN1E0ODIgMzIgNTA1IDY1VDU0MCAxNDVRNTQyIDE1MyA1NjAgMTUzUTU4MCAxNTMgNTgwIDE0NVE1ODAgMTQ0IDU3NiAxMzBRNTY4IDEwMSA1NTQgNzNUNTA4IDE3VDQzOSAtMTBRMzkyIC0xMCAzNzEgMTdUMzUwIDczUTM1MCA5MiAzODYgMTkzVDQyMyAzNDVRNDIzIDQwNCAzNzkgNDA0SDM3NFEyODggNDA0IDIyOSAzMDNMMjIyIDI5MUwxODkgMTU3UTE1NiAyNiAxNTEgMTZRMTM4IC0xMSAxMDggLTExUTk1IC0xMSA4NyAtNVQ3NiA3VDc0IDE3UTc0IDMwIDExMiAxODBUMTUyIDM0M1ExNTMgMzQ4IDE1MyAzNjZRMTUzIDQwNSAxMjkgNDA1UTkxIDQwNSA2NiAzMDVRNjAgMjg1IDYwIDI4NFE1OCAyNzggNDEgMjc4SDI3UTIxIDI4NCAyMSAyODdaIj48L3BhdGg+CjxwYXRoIHN0cm9rZS13aWR0aD0iMSIgaWQ9IkUxLU1KTUFUSEktNjgiIGQ9Ik0xMzcgNjgzUTEzOCA2ODMgMjA5IDY4OFQyODIgNjk0UTI5NCA2OTQgMjk0IDY4NVEyOTQgNjc0IDI1OCA1MzRRMjIwIDM4NiAyMjAgMzgzUTIyMCAzODEgMjI3IDM4OFEyODggNDQyIDM1NyA0NDJRNDExIDQ0MiA0NDQgNDE1VDQ3OCAzMzZRNDc4IDI4NSA0NDAgMTc4VDQwMiA1MFE0MDMgMzYgNDA3IDMxVDQyMiAyNlE0NTAgMjYgNDc0IDU2VDUxMyAxMzhRNTE2IDE0OSA1MTkgMTUxVDUzNSAxNTNRNTU1IDE1MyA1NTUgMTQ1UTU1NSAxNDQgNTUxIDEzMFE1MzUgNzEgNTAwIDMzUTQ2NiAtMTAgNDE5IC0xMEg0MTRRMzY3IC0xMCAzNDYgMTdUMzI1IDc0UTMyNSA5MCAzNjEgMTkyVDM5OCAzNDVRMzk4IDQwNCAzNTQgNDA0SDM0OVEyNjYgNDA0IDIwNSAzMDZMMTk4IDI5M0wxNjQgMTU4UTEzMiAyOCAxMjcgMTZRMTE0IC0xMSA4MyAtMTFRNjkgLTExIDU5IC0yVDQ4IDE2UTQ4IDMwIDEyMSAzMjBMMTk1IDYxNlExOTUgNjI5IDE4OCA2MzJUMTQ5IDYzN0gxMjhRMTIyIDY0MyAxMjIgNjQ1VDEyNCA2NjRRMTI5IDY4MyAxMzcgNjgzWiI+PC9wYXRoPgo8cGF0aCBzdHJva2Utd2lkdGg9IjEiIGlkPSJFMS1NSk1BVEhJLTY1IiBkPSJNMzkgMTY4UTM5IDIyNSA1OCAyNzJUMTA3IDM1MFQxNzQgNDAyVDI0NCA0MzNUMzA3IDQ0MkgzMTBRMzU1IDQ0MiAzODggNDIwVDQyMSAzNTVRNDIxIDI2NSAzMTAgMjM3UTI2MSAyMjQgMTc2IDIyM1ExMzkgMjIzIDEzOCAyMjFRMTM4IDIxOSAxMzIgMTg2VDEyNSAxMjhRMTI1IDgxIDE0NiA1NFQyMDkgMjZUMzAyIDQ1VDM5NCAxMTFRNDAzIDEyMSA0MDYgMTIxUTQxMCAxMjEgNDE5IDExMlQ0MjkgOThUNDIwIDgyVDM5MCA1NVQzNDQgMjRUMjgxIC0xVDIwNSAtMTFRMTI2IC0xMSA4MyA0MlQzOSAxNjhaTTM3MyAzNTNRMzY3IDQwNSAzMDUgNDA1UTI3MiA0MDUgMjQ0IDM5MVQxOTkgMzU3VDE3MCAzMTZUMTU0IDI4MFQxNDkgMjYxUTE0OSAyNjAgMTY5IDI2MFEyODIgMjYwIDMyNyAyODRUMzczIDM1M1oiPjwvcGF0aD4KPHBhdGggc3Ryb2tlLXdpZHRoPSIxIiBpZD0iRTEtTUpNQVRISS03MiIgZD0iTTIxIDI4N1EyMiAyOTAgMjMgMjk1VDI4IDMxN1QzOCAzNDhUNTMgMzgxVDczIDQxMVQ5OSA0MzNUMTMyIDQ0MlExNjEgNDQyIDE4MyA0MzBUMjE0IDQwOFQyMjUgMzg4UTIyNyAzODIgMjI4IDM4MlQyMzYgMzg5UTI4NCA0NDEgMzQ3IDQ0MUgzNTBRMzk4IDQ0MSA0MjIgNDAwUTQzMCAzODEgNDMwIDM2M1E0MzAgMzMzIDQxNyAzMTVUMzkxIDI5MlQzNjYgMjg4UTM0NiAyODggMzM0IDI5OVQzMjIgMzI4UTMyMiAzNzYgMzc4IDM5MlEzNTYgNDA1IDM0MiA0MDVRMjg2IDQwNSAyMzkgMzMxUTIyOSAzMTUgMjI0IDI5OFQxOTAgMTY1UTE1NiAyNSAxNTEgMTZRMTM4IC0xMSAxMDggLTExUTk1IC0xMSA4NyAtNVQ3NiA3VDc0IDE3UTc0IDMwIDExNCAxODlUMTU0IDM2NlExNTQgNDA1IDEyOCA0MDVRMTA3IDQwNSA5MiAzNzdUNjggMzE2VDU3IDI4MFE1NSAyNzggNDEgMjc4SDI3UTIxIDI4NCAyMSAyODdaIj48L3BhdGg+CjxwYXRoIHN0cm9rZS13aWR0aD0iMSIgaWQ9IkUxLU1KTUFUSEktNzQiIGQ9Ik0yNiAzODVRMTkgMzkyIDE5IDM5NVExOSAzOTkgMjIgNDExVDI3IDQyNVEyOSA0MzAgMzYgNDMwVDg3IDQzMUgxNDBMMTU5IDUxMVExNjIgNTIyIDE2NiA1NDBUMTczIDU2NlQxNzkgNTg2VDE4NyA2MDNUMTk3IDYxNVQyMTEgNjI0VDIyOSA2MjZRMjQ3IDYyNSAyNTQgNjE1VDI2MSA1OTZRMjYxIDU4OSAyNTIgNTQ5VDIzMiA0NzBMMjIyIDQzM1EyMjIgNDMxIDI3MiA0MzFIMzIzUTMzMCA0MjQgMzMwIDQyMFEzMzAgMzk4IDMxNyAzODVIMjEwTDE3NCAyNDBRMTM1IDgwIDEzNSA2OFExMzUgMjYgMTYyIDI2UTE5NyAyNiAyMzAgNjBUMjgzIDE0NFEyODUgMTUwIDI4OCAxNTFUMzAzIDE1M0gzMDdRMzIyIDE1MyAzMjIgMTQ1UTMyMiAxNDIgMzE5IDEzM1EzMTQgMTE3IDMwMSA5NVQyNjcgNDhUMjE2IDZUMTU1IC0xMVExMjUgLTExIDk4IDRUNTkgNTZRNTcgNjQgNTcgODNWMTAxTDkyIDI0MVExMjcgMzgyIDEyOCAzODNRMTI4IDM4NSA3NyAzODVIMjZaIj48L3BhdGg+CjxwYXRoIHN0cm9rZS13aWR0aD0iMSIgaWQ9IkUxLU1KTUFUSEktNjQiIGQ9Ik0zNjYgNjgzUTM2NyA2ODMgNDM4IDY4OFQ1MTEgNjk0UTUyMyA2OTQgNTIzIDY4NlE1MjMgNjc5IDQ1MCAzODRUMzc1IDgzVDM3NCA2OFEzNzQgMjYgNDAyIDI2UTQxMSAyNyA0MjIgMzVRNDQzIDU1IDQ2MyAxMzFRNDY5IDE1MSA0NzMgMTUyUTQ3NSAxNTMgNDgzIDE1M0g0ODdINDkxUTUwNiAxNTMgNTA2IDE0NVE1MDYgMTQwIDUwMyAxMjlRNDkwIDc5IDQ3MyA0OFQ0NDUgOFQ0MTcgLThRNDA5IC0xMCAzOTMgLTEwUTM1OSAtMTAgMzM2IDVUMzA2IDM2TDMwMCA1MVEyOTkgNTIgMjk2IDUwUTI5NCA0OCAyOTIgNDZRMjMzIC0xMCAxNzIgLTEwUTExNyAtMTAgNzUgMzBUMzMgMTU3UTMzIDIwNSA1MyAyNTVUMTAxIDM0MVExNDggMzk4IDE5NSA0MjBUMjgwIDQ0MlEzMzYgNDQyIDM2NCA0MDBRMzY5IDM5NCAzNjkgMzk2UTM3MCA0MDAgMzk2IDUwNVQ0MjQgNjE2UTQyNCA2MjkgNDE3IDYzMlQzNzggNjM3SDM1N1EzNTEgNjQzIDM1MSA2NDVUMzUzIDY2NFEzNTggNjgzIDM2NiA2ODNaTTM1MiAzMjZRMzI5IDQwNSAyNzcgNDA1UTI0MiA0MDUgMjEwIDM3NFQxNjAgMjkzUTEzMSAyMTQgMTE5IDEyOVExMTkgMTI2IDExOSAxMThUMTE4IDEwNlExMTggNjEgMTM2IDQ0VDE3OSAyNlEyMzMgMjYgMjkwIDk4TDI5OCAxMDlMMzUyIDMyNloiPjwvcGF0aD4KPHBhdGggc3Ryb2tlLXdpZHRoPSIxIiBpZD0iRTEtTUpNQUlOLTIyIiBkPSJNMzQgNjM0UTM0IDY1OSA1MCA2NzZUOTMgNjk0UTEyMSA2OTQgMTQ0IDY2OFQxNjggNTc5UTE2OCA1MjUgMTQ2IDQ3NlQxMDEgNDAzVDczIDM3OVE2OSAzNzkgNjAgMzg4VDUwIDQwMVE1MCA0MDQgNjIgNDE3VDg4IDQ0OFQxMTYgNTAwVDEzMSA1NzJRMTMxIDU4NCAxMzAgNTg0VDEyNSA1ODFUMTEyIDU3NlQ5NCA1NzNRNjkgNTczIDUyIDU5MFQzNCA2MzRaTTIzOCA2MzRRMjM4IDY1OSAyNTQgNjc2VDI5NyA2OTRRMzI1IDY5NCAzNDggNjY4VDM3MiA1NzlRMzcyIDUyNSAzNTAgNDc2VDMwNSA0MDNUMjc3IDM3OVEyNzMgMzc5IDI2NCAzODhUMjU0IDQwMVEyNTQgNDA0IDI2NiA0MTdUMjkyIDQ0OFQzMjAgNTAwVDMzNSA1NzJRMzM1IDU4NCAzMzQgNTg0VDMyOSA1ODFUMzE2IDU3NlQyOTggNTczUTI3MyA1NzMgMjU2IDU5MFQyMzggNjM0WiI+PC9wYXRoPgo8L2RlZnM+CjxnIHN0cm9rZT0iY3VycmVudENvbG9yIiBmaWxsPSJjdXJyZW50Q29sb3IiIHN0cm9rZS13aWR0aD0iMCIgdHJhbnNmb3JtPSJtYXRyaXgoMSAwIDAgLTEgMCAwKSIgYXJpYS1oaWRkZW49InRydWUiPgogPHVzZSB4bGluazpocmVmPSIjRTEtTUpNQVRISS02OSIgeD0iMCIgeT0iMCI+PC91c2U+CiA8dXNlIHhsaW5rOmhyZWY9IiNFMS1NSk1BVEhJLTZFIiB4PSIzNDUiIHk9IjAiPjwvdXNlPgogPHVzZSB4bGluazpocmVmPSIjRTEtTUpNQVRISS02OCIgeD0iOTQ2IiB5PSIwIj48L3VzZT4KIDx1c2UgeGxpbms6aHJlZj0iI0UxLU1KTUFUSEktNjUiIHg9IjE1MjIiIHk9IjAiPjwvdXNlPgogPHVzZSB4bGluazpocmVmPSIjRTEtTUpNQVRISS03MiIgeD0iMTk4OSIgeT0iMCI+PC91c2U+CiA8dXNlIHhsaW5rOmhyZWY9IiNFMS1NSk1BVEhJLTY5IiB4PSIyNDQwIiB5PSIwIj48L3VzZT4KIDx1c2UgeGxpbms6aHJlZj0iI0UxLU1KTUFUSEktNzQiIHg9IjI3ODYiIHk9IjAiPjwvdXNlPgogPHVzZSB4bGluazpocmVmPSIjRTEtTUpNQVRISS02NSIgeD0iMzE0NyIgeT0iMCI+PC91c2U+CiA8dXNlIHhsaW5rOmhyZWY9IiNFMS1NSk1BVEhJLTY0IiB4PSIzNjE0IiB5PSIwIj48L3VzZT4KIDx1c2UgeGxpbms6aHJlZj0iI0UxLU1KTUFJTi0yMiIgeD0iNDQxNSIgeT0iMCI+PC91c2U+CjwvZz4KPC9zdmc+">PODS_CONFIGURATION_BUILD_DIR/SDWebImage”</p>
+</li>
+<li><ol start="9">
+<li>指定 repo 镜像<br>pod repo remove master<br>pod repo add master <a href="https://links.jianshu.com/go?to=https://gitee.com/mirrors/CocoaPods-Specs">https://gitee.com/mirrors/CocoaPods-Specs</a> （gitee 镜像）<br>pod repo update<br>pod repo remove master<br>pod repo add master <a href="https://links.jianshu.com/go?to=https://mirrors.tuna.tsinghua.edu.cn/git/CocoaPods/Specs.git">https://mirrors.tuna.tsinghua.edu.cn/git/CocoaPods/Specs.git</a> （清华镜像）<br>pod repo update<br>source ‘<a href="https://links.jianshu.com/go?to=https://gitee.com/mirrors/CocoaPods-Specs.git%27">https://gitee.com/mirrors/CocoaPods-Specs.git’</a><br>source ‘<a href="https://links.jianshu.com/go?to=https://mirrors.tuna.tsinghua.edu.cn/git/CocoaPods/Specs.git%27">https://mirrors.tuna.tsinghua.edu.cn/git/CocoaPods/Specs.git’</a></li>
+</ol>
+</li>
+</ul>
+<p>参考文章：<br><a href="https://www.jianshu.com/p/52c5035c9a87">IOS 基础知识 - CocoaPods 原理篇</a></p>
+<p>好文章：<br><a href="https://www.jianshu.com/p/83baebf049b8">CocoaPods</a></p>
+]]></content>
+      <tags>
+        <tag>CocoaPods</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>iOS 签名机制『理解指南』</title>
     <url>/2021/01/03/iOS-%E7%AD%BE%E5%90%8D%E6%9C%BA%E5%88%B6%E3%80%8E%E7%90%86%E8%A7%A3%E6%8C%87%E5%8D%97%E3%80%8F/</url>
     <content><![CDATA[<blockquote>
@@ -255,201 +450,6 @@
 <h3 id="“未完待续…”"><a href="#“未完待续…”" class="headerlink" title="“未完待续…”"></a>“未完待续…”</h3>]]></content>
       <tags>
         <tag>iOS 笔记</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>iOS 笔记 - 导航控制器 (Nav) 的 10 条经验</title>
-    <url>/2021/01/03/iOS%20%E7%AC%94%E8%AE%B0%20-%20%E5%AF%BC%E8%88%AA%E6%8E%A7%E5%88%B6%E5%99%A8%20(Nav)%20%E7%9A%84%2010%20%E6%9D%A1%E7%BB%8F%E9%AA%8C%20/</url>
-    <content><![CDATA[<ul>
-<li><ol>
-<li>导航控制器永远显示的是栈顶控制器的 view</li>
-</ol>
-</li>
-</ul>
-<ul>
-<li><ol start="2">
-<li>导航控制器中做界面之间的跳转必须取到导航控制器</li>
-</ol>
-</li>
-</ul>
-<ul>
-<li><ol start="3">
-<li>调用 pop 方法并不会马上销毁当前控制器</li>
-</ol>
-</li>
-</ul>
-<ul>
-<li>  4.popToViewController 使用注意点：传入进去的控制器必须是导航控制器栈里面的控制器</li>
-</ul>
-<ul>
-<li><ol start="5">
-<li>导航条的内容由栈顶控制器决定, 一个导航控制器只有一个导航条, 因此只能由一个控制器决定, 谁先显示在最外面, 谁就是栈顶控制器.</li>
-</ol>
-</li>
-</ul>
-<ul>
-<li><ol start="6">
-<li>在 iOS7 之后, 默认会把导航条上的按钮的图片渲染成蓝色.</li>
-</ol>
-</li>
-</ul>
-<ul>
-<li><ol start="7">
-<li>导航条上的子控件位置不需要我们管理, 只需要管理尺寸</li>
-</ol>
-</li>
-</ul>
-<ul>
-<li>  8.UINavigationItem: 是一个模型, 决定导航条的内容 (左边内容, 中间, 右边内容)</li>
-</ul>
-<ul>
-<li>  9.UIBarButtonItem: 是一个模型, 决定导航条上按钮的内容</li>
-</ul>
-<ul>
-<li><ol start="10">
-<li>以后只要看到 item, 通常都是苹果提供的模型, 只要改模型就能修改苹果的某些控件.</li>
-</ol>
-</li>
-</ul>
-]]></content>
-      <tags>
-        <tag>iOS 笔记</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>CocoaPods的使用和安装</title>
-    <url>/2021/01/03/CocoaPods%E7%9A%84%E4%BD%BF%E7%94%A8%E5%92%8C%E5%AE%89%E8%A3%85/</url>
-    <content><![CDATA[<h6 id="更新时间：2020-6-28"><a href="#更新时间：2020-6-28" class="headerlink" title="更新时间：2020.6.28"></a>更新时间：2020.6.28</h6><p>安装方式有两种，第一种使用普通的终端命令行去安装，第二种使用工具 Homebrew 去安装，homebrew 是一个安装包工具，可以安装 node、git、Cocoapods 等工具，相当好用，如何安装 Homebrew 移驾我的另一篇文章。<a href="https://www.jianshu.com/writer#/notebooks/46174561/notes/71162156/preview">Homebrew 是什么？以及使用</a></p>
-<h6 id="特别更新-特别重要（如果你遇到-pod-install、pod-update-无法更新下载）"><a href="#特别更新-特别重要（如果你遇到-pod-install、pod-update-无法更新下载）" class="headerlink" title="特别更新 + 特别重要（如果你遇到 pod install、pod update 无法更新下载）"></a>特别更新 + 特别重要（如果你遇到 pod install、pod update 无法更新下载）</h6><p>下面我要说的是卡了我一周的一个问题～<br>因为换了一台新设备，于是我满心欢心的安装 Homebrew、RVM、Ruby，接下来就是安装 Cocoapods，安装时候怎么都下载不下来 cocoapods 所需要 spec，一周后终于在一个博客上看到，Cocoapods 源改变了，以前依据 master 索引，现在是 CDN 的 Trunk 下的索引。Cocoapods 从 1.8 版本开始 CocoaPods 将默认源切换到了 CDN 服务，也就是不再将整个的 repo master 先下载下来才能正常使用 pods 而是用按需下载。pod install 和 pod update 速度都很快。怎么做呢？跟我来～</p>
-<ul>
-<li><ol>
-<li>删除原来的 master 索引，使用最新的 trunk 下的索引</li>
-</ol>
-</li>
-<li><ol start="2">
-<li>查看远程源列表: pod repo list</li>
-</ol>
-</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">master</span><br><span class="line">          Type: git (master)</span><br><span class="line">          URL: https:&#x2F;&#x2F;github.com&#x2F;CocoaPods&#x2F;Specs.git</span><br><span class="line">          Path: &#x2F;Users&#x2F;iroot&#x2F;.cocoapods&#x2F;repos&#x2F;master</span><br><span class="line">    trunk</span><br><span class="line">          Type: CDN</span><br><span class="line">          URL: https:&#x2F;&#x2F;cdn.cocoapods.org&#x2F;</span><br></pre></td></tr></table></figure>
-<ul>
-<li><ol start="3">
-<li>手动删除 master，前往路径：~/.cocoapods/repos/</li>
-</ol>
-</li>
-<li><ol start="4">
-<li>使用 “ping <a href="https://links.jianshu.com/go?to=https://raw.githubusercontent.com">https://raw.githubusercontent.com</a>“ 命令，ping 通后将显示的 ip 地址与域名追加到 hosts 文件最后一行，ip 地址根据实际显示地址添加即可</li>
-</ol>
-</li>
-<li><ol start="5">
-<li>先 cd 到 etc 文件夹，然后执行 open . 指令，注意有个点哦。</li>
-</ol>
-</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ cd &#x2F;etc</span><br><span class="line">      $ &#x2F;etc open .</span><br><span class="line">      找到host文件，拷贝分到桌面，将</span><br><span class="line">      151.101.228.133 raw.githubusercontent.com追加到最后一行，保存。然后替换原有的host文件</span><br><span class="line"></span><br><span class="line">      sudo vi &#x2F;etc&#x2F;hosts</span><br><span class="line">      添加 199.232.4.133 raw.githubusercontent.com，这样我们不需要master这个文件，我们也能正常通过cdn的方式使用cocoapods了</span><br></pre></td></tr></table></figure>
-<a id="more"></a>
-
-<h1 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h1><h6 id="一、CocoaPods-简介"><a href="#一、CocoaPods-简介" class="headerlink" title="一、CocoaPods 简介"></a>一、CocoaPods 简介</h6><p>CocoaPods 是 IOS 项目上负责管理依赖的工具，即对第三方库的依赖。开发 iOS 项目不可避免地要使用第三方开源库，CocoaPods 的出现使得我们可以节省设置和更新第三方开源库的时间。</p>
-<h6 id="二、使用-Homebrew-工具安装-Ruby-CocoaPods"><a href="#二、使用-Homebrew-工具安装-Ruby-CocoaPods" class="headerlink" title="二、使用 Homebrew 工具安装 Ruby + CocoaPods"></a>二、使用 Homebrew 工具安装 Ruby + CocoaPods</h6><p>安装 ruby（这里使用 Homeview 来安装 ruby，安装 Homebrew 的方法在文章开头有链接）</p>
-<ul>
-<li>  1.brew install ruby（安装最新版的 ruby）</li>
-<li>  2.ruby –version（ruby 版本）</li>
-<li>  3.curl -sSL <a href="https://links.jianshu.com/go?to=https://get.rvm.io">https://get.rvm.io</a> | bash -s stable（RVM 是一个便捷的多版本 Ruby 环境的管理和切换工具. 安装它，官网：<a href="https://links.jianshu.com/go?to=https://rvm.io/">https://rvm.io/</a>）</li>
-<li>  4.rvm get stable（rvm 更新）</li>
-<li>  5.rvm –version（rvm 版本）</li>
-<li>  6.sudo gem update –system（gem 更新）</li>
-<li>  7.gem sources –remove <a href="https://links.jianshu.com/go?to=https://rubygems.org/">https://rubygems.org/</a>（移除之前的源）</li>
-<li>  8.gem sources –add <a href="https://links.jianshu.com/go?to=https://gems.ruby-china.com/">https://gems.ruby-china.com/</a>（设置新的源）</li>
-<li>  9.gem sources -l（查看当前源）</li>
-<li>10.gem –version（gem 版本）<br>  <code>注意：如果你第一次安装ruby你可以忽略345的命令，还有就是遇到You can try adding it manually in `/Users/XXX/.cocoapods/repos` 这种问题直接去github下载然后放到路径下就好了，是因为文件太大网不好。</code></li>
-</ul>
-<p>安装 cocoapods</p>
-<ul>
-<li>  1.sudo gem install -n /usr/local/bin cocoapods（安装 cocoapods）</li>
-<li>  2.pod setup（安装本地库）</li>
-<li>  3.pod repo update（更新本地库）</li>
-<li>  4.pod –version（pod 版本）</li>
-</ul>
-<p>卸载 cocoapods</p>
-<ul>
-<li>  1.sudo gem uninstall -n /user/local/bin cocoapods</li>
-</ul>
-<h6 id="三、使用终端命令安装-Ruby-CocoaPods"><a href="#三、使用终端命令安装-Ruby-CocoaPods" class="headerlink" title="三、使用终端命令安装 Ruby + CocoaPods"></a>三、使用终端命令安装 Ruby + CocoaPods</h6><p>安装 ruby</p>
-<ul>
-<li>  1.ruby -v（查看当前 ruby 版本）</li>
-<li>  2.gem sources -l（查看当前镜像地址）</li>
-<li>  3.gem sources –remove <a href="https://links.jianshu.com/go?to=https://rubygems.org/">https://rubygems.org/</a>（移除原本镜像地址）</li>
-<li>  4.gem sources -a <a href="https://links.jianshu.com/go?to=https://gems.ruby-china.com">https://gems.ruby-china.com</a>（替换镜像，防止被翻）</li>
-<li>  5.gem sources -l（检查替换镜像是否成功）</li>
-</ul>
-<p>安装 Cocoapods</p>
-<ul>
-<li>  1.sudo gem install cocoapods</li>
-</ul>
-<h6 id="四、安装好-Cocoapods-的使用"><a href="#四、安装好-Cocoapods-的使用" class="headerlink" title="四、安装好 Cocoapods 的使用"></a>四、安装好 Cocoapods 的使用</h6><ul>
-<li><ol>
-<li>新建一个项目，假设项目名称为 HelloWord</li>
-</ol>
-</li>
-<li><ol start="2">
-<li>终端输入：cd HelloWord 文件路径</li>
-</ol>
-</li>
-<li><ol start="3">
-<li>创建 Podfile 配置文件，终端输入：vim Podfile</li>
-</ol>
-</li>
-<li><ol start="4">
-<li>接着键盘输入 i 进入编辑模式，继续输入以下内容：</li>
-</ol>
-</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">platform:ios, &#39;8.0&#39;</span><br><span class="line">target &#39;HelloWord&#39;</span><br><span class="line">pod &#39;Masonry&#39;, &#39;~&gt; 1.1.0&#39;</span><br></pre></td></tr></table></figure>
-<ul>
-<li><ol start="5">
-<li>键盘按下 ESC 键，然后输入 “:wq” 进入 vim 命令模式，回车</li>
-</ol>
-</li>
-<li><ol start="6">
-<li>终端继续输入 pod install，到此恭喜你，你安装好了 CocoaPods，并且导入了一个第三方库 Masonry，以后打开该项目只需找到 HelloWord 文件夹下后缀名为. xcworkspace 打开即可。</li>
-</ol>
-</li>
-</ul>
-<h6 id="五、CocoaPods-命令集合"><a href="#五、CocoaPods-命令集合" class="headerlink" title="五、CocoaPods 命令集合"></a>五、CocoaPods 命令集合</h6><p>1.pod init ：初始化<br>2.pod install ：安装库<br>3.pod update ：更新库<br>4.pod search XXX ：查找所需三方库<br>5.gem install cocoapods –pre ：更新 Cocoapods<br>6.pod env ：查看已经安装的 cocoapods 版本<br>7.pod outdated ：查看 Podfile 文件中的依赖库的最新版本</p>
-<h6 id="六、Cocoapods-使用过程中遇到的问题以及错误-ERROR（持续更新）"><a href="#六、Cocoapods-使用过程中遇到的问题以及错误-ERROR（持续更新）" class="headerlink" title="六、Cocoapods 使用过程中遇到的问题以及错误 ERROR（持续更新）"></a>六、Cocoapods 使用过程中遇到的问题以及错误 ERROR（持续更新）</h6><p>1.<code>[!] Invalid `Podfile` file: syntax error, unexpected end, expecting end-of-input</code><br>解决方案：这是因为你 Podfile 文件内容输入错误，好好检查一下吧～<br>2.<code>Specs satisfying the `Kingfisher (~&gt; 5.13.3)` dependency were found, but they required a higher minimum deployment target.</code><br>解决方案：原因是因为三方库本身支持最低版本是 10.0，而我设置了 8.0 因此报错<br>3.<code>[!] Unable to find a specification for `XXX`You have either: * out-of-date source repos which you can update with `pod repo update` or with `pod install --repo-update`.* mistyped the name or version.* not added the source repo that hosts the Podspec to your Podfile.</code><br>解决方案：由于本地 repo 中没有该库或者该版本导致的，执行 pod repo update 即可，你会发现 pod repo update 真的很慢，加快速的就是更新某个库 pod repo update 后拼接库的路径即可 XXX.podspec.json(例如：repo update ~/.cocoapods/repos//master/Specs)</p>
-<h6 id="七、Cocoapods-相关知识点（持续更新）"><a href="#七、Cocoapods-相关知识点（持续更新）" class="headerlink" title="七、Cocoapods 相关知识点（持续更新）"></a>七、Cocoapods 相关知识点（持续更新）</h6><ul>
-<li>  1.pod install 和 pod update 的区别以及使用场景:</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">pod install：会去检查podfile.lock是否已经包含该库，如果包含则继续判断是否指定版本，如果指定版本就去检查podfile.lock中保存的版本是否与新指定的相同，相同则跳过，不相同则更新，如果没有指定版本则不检查更新直接跳过，如果不包含该库则去下载该库并将版本保存在podfile.lock文件中。每次当pod install 命令运行，并下载安装新的pods的时候，他会在Podfile.lock中为每个pod写入它安装的版本。此文件跟踪每一个已安装的版本，并且锁定这些版本。当运行pod install 的时候它仅仅解析那些Podfile.lock中位列出的依赖关系。对于Podfile.lock中列出的pods，它仅仅会下载指明的版本，不会去检查是否有新版本可用。对于Podfile.lock中未列出的pods，他会搜索与Podfile中内容相匹配的版本 (例如 pod &#39;MyPod&#39;, &#39;~&gt;1.2&#39;)。</span><br><span class="line">pod update：这个命令会忽略Podfile.lock中的记录，直接去找符合Podfile文件中的该依赖库的约束版本（无约束的话就是最新版本）。一般在你想要更新pods到一个新的版本的时候使用。当运行pod update PODNAME时，CocoaPods将尝试查找PODNAME的更新版本，而不考虑Podfile.lock中列出的版本。 它会将pod更新为可能的最新版本（只要它与Podfile中的版本限制相匹配）。如果运行pod更新没有pod名称，CocoaPods将更新您Podfile中列出的每个pod到最新的版本。</span><br><span class="line"></span><br><span class="line">pod install使用场景：</span><br><span class="line">  a.新创建工程，第一次引入pod库时</span><br><span class="line">  b.修改了Podfile文件，添加或删除了所依赖的pod库时。</span><br><span class="line">  c.团队中新人拉取工程后获取pod库时。</span><br><span class="line">  d.团队中，不同开发者要同步对pod库的依赖时(有人改变了依赖关系，删除或增加pod时。还有就是有人执行了pod update,此时他的Podfile.lock文件中的跟踪版本就已经变更，此时，其他人只要pod install就能更新为和Podfile.lock文件中的版本。还有就是如果Podfile和Podfile.lock的记录相冲突，Podfile文件中指定了低于Podfile.lock中记录的版本。会以Podfile文件为准，并在获取成功后更新Podfile.lock文件。)</span><br><span class="line"></span><br><span class="line">pod update使用场景：</span><br><span class="line">  a.一般在你想要更新pods到一个新的版本的时候使用。</span><br></pre></td></tr></table></figure>
-<ul>
-<li>  2.podfile 指定版本号时的逻辑运算符</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Besides no version, or a specific one, it is also possible touse logical operators:</span><br><span class="line">    &#39;&gt; 0.1&#39;    Any version higher than 0.1         0.1以上</span><br><span class="line">    &#39;&gt;&#x3D; 0.1&#39;   Version 0.1 and any higher version  0.1以上，包括0.1</span><br><span class="line">    &#39;&lt; 0.1&#39;    Any version lower than 0.1          0.1以下</span><br><span class="line">    &#39;&lt;&#x3D; 0.1&#39;   Version 0.1 and any lower version   0.1以下，包括0.1</span><br><span class="line">    In addition to the logic operators CocoaPods has an optimisicoperator ~&gt;:</span><br><span class="line">    &#39;~&gt; 0.1.2&#39; Version 0.1.2 and the versions up to 0.2, not including 0.2 and higher  0.2以下(不含0.2)，0.1.2以上（含0.1.2）</span><br><span class="line">    &#39;~&gt; 0.1&#39; Version 0.1 and the versions up to 1.0, not including 1.0 and higher      1.0以下(不含1.0)，0.1以上（含0.1）</span><br><span class="line">    &#39;~&gt; 0&#39; Version 0 and higher, this is basically the same as not having it.          0和以上，等于没有此约束</span><br></pre></td></tr></table></figure>
-<ul>
-<li>3.Podfile.lock<br>  a.Podfile.lock 这个文件是我们新建 Podfile 文件后会自动生成的一个文件，里面存储了我们已经安装的依赖库的版本。<br>  b. 当我们第一次运行 Podfile 时，如果对依赖库不指定版本的话，cocoapods 会安装最新的版本，同时将 pods 的版本记录在 Podfile.lock 文件中。这个文件会保持对每个 pod 已安装版本的跟踪，并且锁定这些版本。再执行 pod install 的话，只会处理没有记录在 Podfile.lock 中的依赖库，会查找匹配 Podfile 中描述的版本。对于已经记录在 Podfile.lock 的依赖库，会下载 Podfile.lock 文件中记录的版本，而不会检查是否有更新。当然，如果你约束了 pods 的版本的话，会按照你指定的版本进行安装，同时也会更新 Podfile.lock 记录的信息。<br>  c.Podfile.lock 内部</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">PODS:</span><br><span class="line">  - Masonry (1.1.0)</span><br><span class="line">DEPENDENCIES:</span><br><span class="line">  - Masonry (~&gt; 1.1.0)</span><br><span class="line">SPEC REPOS:</span><br><span class="line">  trunk:</span><br><span class="line">    - Masonry</span><br><span class="line">  SPEC CHECKSUMS:</span><br><span class="line">    Masonry: 678fab65091a9290e40e2832a55e7ab731aad201</span><br><span class="line">    PODFILE CHECKSUM: 7a5a6c829f4d2252e3e3d116ab9757a3b270ed8a</span><br><span class="line">    COCOAPODS: 1.9.3</span><br></pre></td></tr></table></figure>
-<ul>
-<li><p>4.Cocoapods 原理<br>  是将所有的依赖库都放到另一个名为 Pods 的项目中, 然而让主项目依赖 Pods 项目, 这样, 源码管理工作任务从主项目移到了 Pods 项目中.<br>  a.Pods 项目最终会编译成一个名为 libPods.a 的文件, 主项目只要依赖这个. a 文件即可.<br>  b. 对于资源文件, CocoaPods 提供了一个名为 Pods-resources.sh 的 bash 脚步, 该脚本在每次项目, 编译的时候都会执行, 将第三方库的各种资源文件复制到目标目录中.<br>  c.CocoaPods 通过一个名为 Pods.xcconfig 的文件在编译设置所有的依赖和参数</p>
-</li>
-<li><p>5.Cocoapods 下载原理<br>  s.source = {:git =&gt; ‘<a href="https://links.jianshu.com/go?to=mailto:git@gitlab.xxx.net">git@gitlab.xxx.net</a>:ios-thirdpartservice/xxxreact.git’, :tag =&gt;’1.0.0’ }<br>  当使用 Cocoapods 导入私有库时，Cocoapods 先是根据: git =&gt; ‘<a href="https://links.jianshu.com/go?to=mailto:git@gitlab.xxx.net">git@gitlab.xxx.net</a>:ios-thirdpartservice/xxxreact.git’找到对应的 git 仓库，然后根据: tag =&gt; ‘1.0.0’定位到对应 tag 的提交（如果没有注明 Pod 依赖库版本则定位到最后一次的提交），然后在这次提交中检索缀为. podspec 的文件（文件可以随便命名）。找到 podspec 文件后先要验证 <a href="https://links.jianshu.com/go?to=http://s.name">s.name</a> 是否与 Podfile 中的一致，如果不一致则 install 时会报错：[!]Unable to find a specification for ‘React’. 验证成功后，就会根据 Podspec 中的 s.source_files 找到需要导入的代码文件，并通过其他的的数据找到对应的配置文件或资源文件等。最后，将其下载到本地项目中。如果是共有库，这些原理也相同。只是共有库要将 podspec 文件上传到 cocoapods。在导入的时候通过名字 React 去 cocoapods 匹配对应的 podspec，然后根据 s.source 去找到对应的仓库和对应的版本，然后会再去匹配新的 podspec，后边的步骤就完全相同了。</p>
-</li>
-<li><p>6.Cocoapods 集成原理<br>  当所有的依赖库都下载完后，Cocoapods 会将所有的依赖库都放到另一个名为 Pods 的项目中，然后让主项目依赖 Pods 项目。这样，源码管理工作都从主目录移到了 Pods 项目中。Pods 项目最终会编译成为一个名为 libPods.a 的文件，主项目只要依赖这个. a 文件即可。对于资源文件，Cocoapods 提供了一个名为 Pods-resource.sh 的 bash 脚本，该脚本在每次项目编译的时候都会执行，将 Pods 依赖库的各种资源文件复制到目标目录中。Cocoapods 还通过一个名为 Pods.xcconfig 的文件来在编译时设置所有的依赖和参数。</p>
-</li>
-<li><p>7.Cocoapods 版本控制原理<br>  当执行完 pod install 之后，cocoapods 会生成一个 podfile.lock 的文件。podfile.lock 文件最大的用处在于多人开发。如果你没有在 podfile 中指定 pods 版本 pod ‘React’，那么默认为获取当前 React 依赖库的最新版本。当团队中的某个人执行完 pod install 命令后，生产的 podfile.lock 文件就记录下了当时最新 pods 依赖库的版本，这时团队中的其他人 check 下来这份包含 podfile.lock 文件的工程以后，再去执行 pod install 命令时，获取下来的 pods 依赖库的版本和最开始用户获取到的版本一致。如果没有 podfile.lock 文件，后续所有用户执行 pod install 命令都会获取最新版本的 React, 这就可能造成一个团队使用的依赖库版本不一致，这对团队协作来说绝对是个灾难。在这种情况下，如果团队想使用当前最新版本的 React 依赖库，有两种方案：1、更改 podfile，使其指向最新版本的 React 依赖库 2、执行 pod update 命令；鉴于 podfile.lock 文件对团队协作如此重要，所以应该加入到版本控制里面。</p>
-</li>
-<li><p>8.pod 管理的第三方库有 MJExtension.Framework 和 SDWebImage.Framework, 如何在 MJExtension 的某个类中使用来自 SDWebImage 库的类<br>  a. 在 pod 中 找到 MJExtension, 在 Build Phases 中 导入 SDWebImage.Framework<br>  b. 在 pod 的 MJExtension.Framework 中, 找到 Build Settings 配置 Framework Search Paths 的 Debug 和 Release, 添加 <img src="data:image/svg+xml;base64,PHN2ZyB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgd2lkdGg9IjEzLjU4NGV4IiBoZWlnaHQ9IjMuMzQzZXgiIHN0eWxlPSJ2ZXJ0aWNhbC1hbGlnbjogLTEuMTcxZXg7IiB2aWV3Qm94PSIwIC05MzQuOSA1ODQ4LjYgMTQzOS4yIiByb2xlPSJpbWciIGZvY3VzYWJsZT0iZmFsc2UiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgYXJpYS1sYWJlbGxlZGJ5PSJNYXRoSmF4LVNWRy0xLVRpdGxlIj4KPHRpdGxlIGlkPSJNYXRoSmF4LVNWRy0xLVRpdGxlIj5pbmhlcml0ZWQg5ZKMICI8L3RpdGxlPgo8ZGVmcyBhcmlhLWhpZGRlbj0idHJ1ZSI+CjxwYXRoIHN0cm9rZS13aWR0aD0iMSIgaWQ9IkUxLU1KTUFUSEktNjkiIGQ9Ik0xODQgNjAwUTE4NCA2MjQgMjAzIDY0MlQyNDcgNjYxUTI2NSA2NjEgMjc3IDY0OVQyOTAgNjE5UTI5MCA1OTYgMjcwIDU3N1QyMjYgNTU3UTIxMSA1NTcgMTk4IDU2N1QxODQgNjAwWk0yMSAyODdRMjEgMjk1IDMwIDMxOFQ1NCAzNjlUOTggNDIwVDE1OCA0NDJRMTk3IDQ0MiAyMjMgNDE5VDI1MCAzNTdRMjUwIDM0MCAyMzYgMzAxVDE5NiAxOTZUMTU0IDgzUTE0OSA2MSAxNDkgNTFRMTQ5IDI2IDE2NiAyNlExNzUgMjYgMTg1IDI5VDIwOCA0M1QyMzUgNzhUMjYwIDEzN1EyNjMgMTQ5IDI2NSAxNTFUMjgyIDE1M1EzMDIgMTUzIDMwMiAxNDNRMzAyIDEzNSAyOTMgMTEyVDI2OCA2MVQyMjMgMTFUMTYxIC0xMVExMjkgLTExIDEwMiAxMFQ3NCA3NFE3NCA5MSA3OSAxMDZUMTIyIDIyMFExNjAgMzIxIDE2NiAzNDFUMTczIDM4MFExNzMgNDA0IDE1NiA0MDRIMTU0UTEyNCA0MDQgOTkgMzcxVDYxIDI4N1E2MCAyODYgNTkgMjg0VDU4IDI4MVQ1NiAyNzlUNTMgMjc4VDQ5IDI3OFQ0MSAyNzhIMjdRMjEgMjg0IDIxIDI4N1oiPjwvcGF0aD4KPHBhdGggc3Ryb2tlLXdpZHRoPSIxIiBpZD0iRTEtTUpNQVRISS02RSIgZD0iTTIxIDI4N1EyMiAyOTMgMjQgMzAzVDM2IDM0MVQ1NiAzODhUODkgNDI1VDEzNSA0NDJRMTcxIDQ0MiAxOTUgNDI0VDIyNSAzOTBUMjMxIDM2OVEyMzEgMzY3IDIzMiAzNjdMMjQzIDM3OFEzMDQgNDQyIDM4MiA0NDJRNDM2IDQ0MiA0NjkgNDE1VDUwMyAzMzZUNDY1IDE3OVQ0MjcgNTJRNDI3IDI2IDQ0NCAyNlE0NTAgMjYgNDUzIDI3UTQ4MiAzMiA1MDUgNjVUNTQwIDE0NVE1NDIgMTUzIDU2MCAxNTNRNTgwIDE1MyA1ODAgMTQ1UTU4MCAxNDQgNTc2IDEzMFE1NjggMTAxIDU1NCA3M1Q1MDggMTdUNDM5IC0xMFEzOTIgLTEwIDM3MSAxN1QzNTAgNzNRMzUwIDkyIDM4NiAxOTNUNDIzIDM0NVE0MjMgNDA0IDM3OSA0MDRIMzc0UTI4OCA0MDQgMjI5IDMwM0wyMjIgMjkxTDE4OSAxNTdRMTU2IDI2IDE1MSAxNlExMzggLTExIDEwOCAtMTFROTUgLTExIDg3IC01VDc2IDdUNzQgMTdRNzQgMzAgMTEyIDE4MFQxNTIgMzQzUTE1MyAzNDggMTUzIDM2NlExNTMgNDA1IDEyOSA0MDVROTEgNDA1IDY2IDMwNVE2MCAyODUgNjAgMjg0UTU4IDI3OCA0MSAyNzhIMjdRMjEgMjg0IDIxIDI4N1oiPjwvcGF0aD4KPHBhdGggc3Ryb2tlLXdpZHRoPSIxIiBpZD0iRTEtTUpNQVRISS02OCIgZD0iTTEzNyA2ODNRMTM4IDY4MyAyMDkgNjg4VDI4MiA2OTRRMjk0IDY5NCAyOTQgNjg1UTI5NCA2NzQgMjU4IDUzNFEyMjAgMzg2IDIyMCAzODNRMjIwIDM4MSAyMjcgMzg4UTI4OCA0NDIgMzU3IDQ0MlE0MTEgNDQyIDQ0NCA0MTVUNDc4IDMzNlE0NzggMjg1IDQ0MCAxNzhUNDAyIDUwUTQwMyAzNiA0MDcgMzFUNDIyIDI2UTQ1MCAyNiA0NzQgNTZUNTEzIDEzOFE1MTYgMTQ5IDUxOSAxNTFUNTM1IDE1M1E1NTUgMTUzIDU1NSAxNDVRNTU1IDE0NCA1NTEgMTMwUTUzNSA3MSA1MDAgMzNRNDY2IC0xMCA0MTkgLTEwSDQxNFEzNjcgLTEwIDM0NiAxN1QzMjUgNzRRMzI1IDkwIDM2MSAxOTJUMzk4IDM0NVEzOTggNDA0IDM1NCA0MDRIMzQ5UTI2NiA0MDQgMjA1IDMwNkwxOTggMjkzTDE2NCAxNThRMTMyIDI4IDEyNyAxNlExMTQgLTExIDgzIC0xMVE2OSAtMTEgNTkgLTJUNDggMTZRNDggMzAgMTIxIDMyMEwxOTUgNjE2UTE5NSA2MjkgMTg4IDYzMlQxNDkgNjM3SDEyOFExMjIgNjQzIDEyMiA2NDVUMTI0IDY2NFExMjkgNjgzIDEzNyA2ODNaIj48L3BhdGg+CjxwYXRoIHN0cm9rZS13aWR0aD0iMSIgaWQ9IkUxLU1KTUFUSEktNjUiIGQ9Ik0zOSAxNjhRMzkgMjI1IDU4IDI3MlQxMDcgMzUwVDE3NCA0MDJUMjQ0IDQzM1QzMDcgNDQySDMxMFEzNTUgNDQyIDM4OCA0MjBUNDIxIDM1NVE0MjEgMjY1IDMxMCAyMzdRMjYxIDIyNCAxNzYgMjIzUTEzOSAyMjMgMTM4IDIyMVExMzggMjE5IDEzMiAxODZUMTI1IDEyOFExMjUgODEgMTQ2IDU0VDIwOSAyNlQzMDIgNDVUMzk0IDExMVE0MDMgMTIxIDQwNiAxMjFRNDEwIDEyMSA0MTkgMTEyVDQyOSA5OFQ0MjAgODJUMzkwIDU1VDM0NCAyNFQyODEgLTFUMjA1IC0xMVExMjYgLTExIDgzIDQyVDM5IDE2OFpNMzczIDM1M1EzNjcgNDA1IDMwNSA0MDVRMjcyIDQwNSAyNDQgMzkxVDE5OSAzNTdUMTcwIDMxNlQxNTQgMjgwVDE0OSAyNjFRMTQ5IDI2MCAxNjkgMjYwUTI4MiAyNjAgMzI3IDI4NFQzNzMgMzUzWiI+PC9wYXRoPgo8cGF0aCBzdHJva2Utd2lkdGg9IjEiIGlkPSJFMS1NSk1BVEhJLTcyIiBkPSJNMjEgMjg3UTIyIDI5MCAyMyAyOTVUMjggMzE3VDM4IDM0OFQ1MyAzODFUNzMgNDExVDk5IDQzM1QxMzIgNDQyUTE2MSA0NDIgMTgzIDQzMFQyMTQgNDA4VDIyNSAzODhRMjI3IDM4MiAyMjggMzgyVDIzNiAzODlRMjg0IDQ0MSAzNDcgNDQxSDM1MFEzOTggNDQxIDQyMiA0MDBRNDMwIDM4MSA0MzAgMzYzUTQzMCAzMzMgNDE3IDMxNVQzOTEgMjkyVDM2NiAyODhRMzQ2IDI4OCAzMzQgMjk5VDMyMiAzMjhRMzIyIDM3NiAzNzggMzkyUTM1NiA0MDUgMzQyIDQwNVEyODYgNDA1IDIzOSAzMzFRMjI5IDMxNSAyMjQgMjk4VDE5MCAxNjVRMTU2IDI1IDE1MSAxNlExMzggLTExIDEwOCAtMTFROTUgLTExIDg3IC01VDc2IDdUNzQgMTdRNzQgMzAgMTE0IDE4OVQxNTQgMzY2UTE1NCA0MDUgMTI4IDQwNVExMDcgNDA1IDkyIDM3N1Q2OCAzMTZUNTcgMjgwUTU1IDI3OCA0MSAyNzhIMjdRMjEgMjg0IDIxIDI4N1oiPjwvcGF0aD4KPHBhdGggc3Ryb2tlLXdpZHRoPSIxIiBpZD0iRTEtTUpNQVRISS03NCIgZD0iTTI2IDM4NVExOSAzOTIgMTkgMzk1UTE5IDM5OSAyMiA0MTFUMjcgNDI1UTI5IDQzMCAzNiA0MzBUODcgNDMxSDE0MEwxNTkgNTExUTE2MiA1MjIgMTY2IDU0MFQxNzMgNTY2VDE3OSA1ODZUMTg3IDYwM1QxOTcgNjE1VDIxMSA2MjRUMjI5IDYyNlEyNDcgNjI1IDI1NCA2MTVUMjYxIDU5NlEyNjEgNTg5IDI1MiA1NDlUMjMyIDQ3MEwyMjIgNDMzUTIyMiA0MzEgMjcyIDQzMUgzMjNRMzMwIDQyNCAzMzAgNDIwUTMzMCAzOTggMzE3IDM4NUgyMTBMMTc0IDI0MFExMzUgODAgMTM1IDY4UTEzNSAyNiAxNjIgMjZRMTk3IDI2IDIzMCA2MFQyODMgMTQ0UTI4NSAxNTAgMjg4IDE1MVQzMDMgMTUzSDMwN1EzMjIgMTUzIDMyMiAxNDVRMzIyIDE0MiAzMTkgMTMzUTMxNCAxMTcgMzAxIDk1VDI2NyA0OFQyMTYgNlQxNTUgLTExUTEyNSAtMTEgOTggNFQ1OSA1NlE1NyA2NCA1NyA4M1YxMDFMOTIgMjQxUTEyNyAzODIgMTI4IDM4M1ExMjggMzg1IDc3IDM4NUgyNloiPjwvcGF0aD4KPHBhdGggc3Ryb2tlLXdpZHRoPSIxIiBpZD0iRTEtTUpNQVRISS02NCIgZD0iTTM2NiA2ODNRMzY3IDY4MyA0MzggNjg4VDUxMSA2OTRRNTIzIDY5NCA1MjMgNjg2UTUyMyA2NzkgNDUwIDM4NFQzNzUgODNUMzc0IDY4UTM3NCAyNiA0MDIgMjZRNDExIDI3IDQyMiAzNVE0NDMgNTUgNDYzIDEzMVE0NjkgMTUxIDQ3MyAxNTJRNDc1IDE1MyA0ODMgMTUzSDQ4N0g0OTFRNTA2IDE1MyA1MDYgMTQ1UTUwNiAxNDAgNTAzIDEyOVE0OTAgNzkgNDczIDQ4VDQ0NSA4VDQxNyAtOFE0MDkgLTEwIDM5MyAtMTBRMzU5IC0xMCAzMzYgNVQzMDYgMzZMMzAwIDUxUTI5OSA1MiAyOTYgNTBRMjk0IDQ4IDI5MiA0NlEyMzMgLTEwIDE3MiAtMTBRMTE3IC0xMCA3NSAzMFQzMyAxNTdRMzMgMjA1IDUzIDI1NVQxMDEgMzQxUTE0OCAzOTggMTk1IDQyMFQyODAgNDQyUTMzNiA0NDIgMzY0IDQwMFEzNjkgMzk0IDM2OSAzOTZRMzcwIDQwMCAzOTYgNTA1VDQyNCA2MTZRNDI0IDYyOSA0MTcgNjMyVDM3OCA2MzdIMzU3UTM1MSA2NDMgMzUxIDY0NVQzNTMgNjY0UTM1OCA2ODMgMzY2IDY4M1pNMzUyIDMyNlEzMjkgNDA1IDI3NyA0MDVRMjQyIDQwNSAyMTAgMzc0VDE2MCAyOTNRMTMxIDIxNCAxMTkgMTI5UTExOSAxMjYgMTE5IDExOFQxMTggMTA2UTExOCA2MSAxMzYgNDRUMTc5IDI2UTIzMyAyNiAyOTAgOThMMjk4IDEwOUwzNTIgMzI2WiI+PC9wYXRoPgo8cGF0aCBzdHJva2Utd2lkdGg9IjEiIGlkPSJFMS1NSk1BSU4tMjIiIGQ9Ik0zNCA2MzRRMzQgNjU5IDUwIDY3NlQ5MyA2OTRRMTIxIDY5NCAxNDQgNjY4VDE2OCA1NzlRMTY4IDUyNSAxNDYgNDc2VDEwMSA0MDNUNzMgMzc5UTY5IDM3OSA2MCAzODhUNTAgNDAxUTUwIDQwNCA2MiA0MTdUODggNDQ4VDExNiA1MDBUMTMxIDU3MlExMzEgNTg0IDEzMCA1ODRUMTI1IDU4MVQxMTIgNTc2VDk0IDU3M1E2OSA1NzMgNTIgNTkwVDM0IDYzNFpNMjM4IDYzNFEyMzggNjU5IDI1NCA2NzZUMjk3IDY5NFEzMjUgNjk0IDM0OCA2NjhUMzcyIDU3OVEzNzIgNTI1IDM1MCA0NzZUMzA1IDQwM1QyNzcgMzc5UTI3MyAzNzkgMjY0IDM4OFQyNTQgNDAxUTI1NCA0MDQgMjY2IDQxN1QyOTIgNDQ4VDMyMCA1MDBUMzM1IDU3MlEzMzUgNTg0IDMzNCA1ODRUMzI5IDU4MVQzMTYgNTc2VDI5OCA1NzNRMjczIDU3MyAyNTYgNTkwVDIzOCA2MzRaIj48L3BhdGg+CjwvZGVmcz4KPGcgc3Ryb2tlPSJjdXJyZW50Q29sb3IiIGZpbGw9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIwIiB0cmFuc2Zvcm09Im1hdHJpeCgxIDAgMCAtMSAwIDApIiBhcmlhLWhpZGRlbj0idHJ1ZSI+CiA8dXNlIHhsaW5rOmhyZWY9IiNFMS1NSk1BVEhJLTY5IiB4PSIwIiB5PSIwIj48L3VzZT4KIDx1c2UgeGxpbms6aHJlZj0iI0UxLU1KTUFUSEktNkUiIHg9IjM0NSIgeT0iMCI+PC91c2U+CiA8dXNlIHhsaW5rOmhyZWY9IiNFMS1NSk1BVEhJLTY4IiB4PSI5NDYiIHk9IjAiPjwvdXNlPgogPHVzZSB4bGluazpocmVmPSIjRTEtTUpNQVRISS02NSIgeD0iMTUyMiIgeT0iMCI+PC91c2U+CiA8dXNlIHhsaW5rOmhyZWY9IiNFMS1NSk1BVEhJLTcyIiB4PSIxOTg5IiB5PSIwIj48L3VzZT4KIDx1c2UgeGxpbms6aHJlZj0iI0UxLU1KTUFUSEktNjkiIHg9IjI0NDAiIHk9IjAiPjwvdXNlPgogPHVzZSB4bGluazpocmVmPSIjRTEtTUpNQVRISS03NCIgeD0iMjc4NiIgeT0iMCI+PC91c2U+CiA8dXNlIHhsaW5rOmhyZWY9IiNFMS1NSk1BVEhJLTY1IiB4PSIzMTQ3IiB5PSIwIj48L3VzZT4KIDx1c2UgeGxpbms6aHJlZj0iI0UxLU1KTUFUSEktNjQiIHg9IjM2MTQiIHk9IjAiPjwvdXNlPgo8ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSg0MTM3LDApIj4KPHRleHQgZm9udC1mYW1pbHk9Im1vbm9zcGFjZSIgc3Ryb2tlPSJub25lIiB0cmFuc2Zvcm09InNjYWxlKDcxLjc1OSkgbWF0cml4KDEgMCAwIC0xIDAgMCkiPuWSjDwvdGV4dD4KPC9nPgogPHVzZSB4bGluazpocmVmPSIjRTEtTUpNQUlOLTIyIiB4PSI1MzQ4IiB5PSIwIj48L3VzZT4KPC9nPgo8L3N2Zz4=">PODS_CONFIGURATION_BUILD_DIR/SDWebImage”<br>  c. 在 pod 的 MJExtension.xcconfig 中 添加 ： FRAMEWORK_SEARCH_PATHS = <img src="data:image/svg+xml;base64,PHN2ZyB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgd2lkdGg9IjExLjQxN2V4IiBoZWlnaHQ9IjIuMTc2ZXgiIHN0eWxlPSJ2ZXJ0aWNhbC1hbGlnbjogLTAuMzM4ZXg7IiB2aWV3Qm94PSIwIC03OTEuMyA0OTE1LjggOTM2LjkiIHJvbGU9ImltZyIgZm9jdXNhYmxlPSJmYWxzZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiBhcmlhLWxhYmVsbGVkYnk9Ik1hdGhKYXgtU1ZHLTEtVGl0bGUiPgo8dGl0bGUgaWQ9Ik1hdGhKYXgtU1ZHLTEtVGl0bGUiPmluaGVyaXRlZCAiPC90aXRsZT4KPGRlZnMgYXJpYS1oaWRkZW49InRydWUiPgo8cGF0aCBzdHJva2Utd2lkdGg9IjEiIGlkPSJFMS1NSk1BVEhJLTY5IiBkPSJNMTg0IDYwMFExODQgNjI0IDIwMyA2NDJUMjQ3IDY2MVEyNjUgNjYxIDI3NyA2NDlUMjkwIDYxOVEyOTAgNTk2IDI3MCA1NzdUMjI2IDU1N1EyMTEgNTU3IDE5OCA1NjdUMTg0IDYwMFpNMjEgMjg3UTIxIDI5NSAzMCAzMThUNTQgMzY5VDk4IDQyMFQxNTggNDQyUTE5NyA0NDIgMjIzIDQxOVQyNTAgMzU3UTI1MCAzNDAgMjM2IDMwMVQxOTYgMTk2VDE1NCA4M1ExNDkgNjEgMTQ5IDUxUTE0OSAyNiAxNjYgMjZRMTc1IDI2IDE4NSAyOVQyMDggNDNUMjM1IDc4VDI2MCAxMzdRMjYzIDE0OSAyNjUgMTUxVDI4MiAxNTNRMzAyIDE1MyAzMDIgMTQzUTMwMiAxMzUgMjkzIDExMlQyNjggNjFUMjIzIDExVDE2MSAtMTFRMTI5IC0xMSAxMDIgMTBUNzQgNzRRNzQgOTEgNzkgMTA2VDEyMiAyMjBRMTYwIDMyMSAxNjYgMzQxVDE3MyAzODBRMTczIDQwNCAxNTYgNDA0SDE1NFExMjQgNDA0IDk5IDM3MVQ2MSAyODdRNjAgMjg2IDU5IDI4NFQ1OCAyODFUNTYgMjc5VDUzIDI3OFQ0OSAyNzhUNDEgMjc4SDI3UTIxIDI4NCAyMSAyODdaIj48L3BhdGg+CjxwYXRoIHN0cm9rZS13aWR0aD0iMSIgaWQ9IkUxLU1KTUFUSEktNkUiIGQ9Ik0yMSAyODdRMjIgMjkzIDI0IDMwM1QzNiAzNDFUNTYgMzg4VDg5IDQyNVQxMzUgNDQyUTE3MSA0NDIgMTk1IDQyNFQyMjUgMzkwVDIzMSAzNjlRMjMxIDM2NyAyMzIgMzY3TDI0MyAzNzhRMzA0IDQ0MiAzODIgNDQyUTQzNiA0NDIgNDY5IDQxNVQ1MDMgMzM2VDQ2NSAxNzlUNDI3IDUyUTQyNyAyNiA0NDQgMjZRNDUwIDI2IDQ1MyAyN1E0ODIgMzIgNTA1IDY1VDU0MCAxNDVRNTQyIDE1MyA1NjAgMTUzUTU4MCAxNTMgNTgwIDE0NVE1ODAgMTQ0IDU3NiAxMzBRNTY4IDEwMSA1NTQgNzNUNTA4IDE3VDQzOSAtMTBRMzkyIC0xMCAzNzEgMTdUMzUwIDczUTM1MCA5MiAzODYgMTkzVDQyMyAzNDVRNDIzIDQwNCAzNzkgNDA0SDM3NFEyODggNDA0IDIyOSAzMDNMMjIyIDI5MUwxODkgMTU3UTE1NiAyNiAxNTEgMTZRMTM4IC0xMSAxMDggLTExUTk1IC0xMSA4NyAtNVQ3NiA3VDc0IDE3UTc0IDMwIDExMiAxODBUMTUyIDM0M1ExNTMgMzQ4IDE1MyAzNjZRMTUzIDQwNSAxMjkgNDA1UTkxIDQwNSA2NiAzMDVRNjAgMjg1IDYwIDI4NFE1OCAyNzggNDEgMjc4SDI3UTIxIDI4NCAyMSAyODdaIj48L3BhdGg+CjxwYXRoIHN0cm9rZS13aWR0aD0iMSIgaWQ9IkUxLU1KTUFUSEktNjgiIGQ9Ik0xMzcgNjgzUTEzOCA2ODMgMjA5IDY4OFQyODIgNjk0UTI5NCA2OTQgMjk0IDY4NVEyOTQgNjc0IDI1OCA1MzRRMjIwIDM4NiAyMjAgMzgzUTIyMCAzODEgMjI3IDM4OFEyODggNDQyIDM1NyA0NDJRNDExIDQ0MiA0NDQgNDE1VDQ3OCAzMzZRNDc4IDI4NSA0NDAgMTc4VDQwMiA1MFE0MDMgMzYgNDA3IDMxVDQyMiAyNlE0NTAgMjYgNDc0IDU2VDUxMyAxMzhRNTE2IDE0OSA1MTkgMTUxVDUzNSAxNTNRNTU1IDE1MyA1NTUgMTQ1UTU1NSAxNDQgNTUxIDEzMFE1MzUgNzEgNTAwIDMzUTQ2NiAtMTAgNDE5IC0xMEg0MTRRMzY3IC0xMCAzNDYgMTdUMzI1IDc0UTMyNSA5MCAzNjEgMTkyVDM5OCAzNDVRMzk4IDQwNCAzNTQgNDA0SDM0OVEyNjYgNDA0IDIwNSAzMDZMMTk4IDI5M0wxNjQgMTU4UTEzMiAyOCAxMjcgMTZRMTE0IC0xMSA4MyAtMTFRNjkgLTExIDU5IC0yVDQ4IDE2UTQ4IDMwIDEyMSAzMjBMMTk1IDYxNlExOTUgNjI5IDE4OCA2MzJUMTQ5IDYzN0gxMjhRMTIyIDY0MyAxMjIgNjQ1VDEyNCA2NjRRMTI5IDY4MyAxMzcgNjgzWiI+PC9wYXRoPgo8cGF0aCBzdHJva2Utd2lkdGg9IjEiIGlkPSJFMS1NSk1BVEhJLTY1IiBkPSJNMzkgMTY4UTM5IDIyNSA1OCAyNzJUMTA3IDM1MFQxNzQgNDAyVDI0NCA0MzNUMzA3IDQ0MkgzMTBRMzU1IDQ0MiAzODggNDIwVDQyMSAzNTVRNDIxIDI2NSAzMTAgMjM3UTI2MSAyMjQgMTc2IDIyM1ExMzkgMjIzIDEzOCAyMjFRMTM4IDIxOSAxMzIgMTg2VDEyNSAxMjhRMTI1IDgxIDE0NiA1NFQyMDkgMjZUMzAyIDQ1VDM5NCAxMTFRNDAzIDEyMSA0MDYgMTIxUTQxMCAxMjEgNDE5IDExMlQ0MjkgOThUNDIwIDgyVDM5MCA1NVQzNDQgMjRUMjgxIC0xVDIwNSAtMTFRMTI2IC0xMSA4MyA0MlQzOSAxNjhaTTM3MyAzNTNRMzY3IDQwNSAzMDUgNDA1UTI3MiA0MDUgMjQ0IDM5MVQxOTkgMzU3VDE3MCAzMTZUMTU0IDI4MFQxNDkgMjYxUTE0OSAyNjAgMTY5IDI2MFEyODIgMjYwIDMyNyAyODRUMzczIDM1M1oiPjwvcGF0aD4KPHBhdGggc3Ryb2tlLXdpZHRoPSIxIiBpZD0iRTEtTUpNQVRISS03MiIgZD0iTTIxIDI4N1EyMiAyOTAgMjMgMjk1VDI4IDMxN1QzOCAzNDhUNTMgMzgxVDczIDQxMVQ5OSA0MzNUMTMyIDQ0MlExNjEgNDQyIDE4MyA0MzBUMjE0IDQwOFQyMjUgMzg4UTIyNyAzODIgMjI4IDM4MlQyMzYgMzg5UTI4NCA0NDEgMzQ3IDQ0MUgzNTBRMzk4IDQ0MSA0MjIgNDAwUTQzMCAzODEgNDMwIDM2M1E0MzAgMzMzIDQxNyAzMTVUMzkxIDI5MlQzNjYgMjg4UTM0NiAyODggMzM0IDI5OVQzMjIgMzI4UTMyMiAzNzYgMzc4IDM5MlEzNTYgNDA1IDM0MiA0MDVRMjg2IDQwNSAyMzkgMzMxUTIyOSAzMTUgMjI0IDI5OFQxOTAgMTY1UTE1NiAyNSAxNTEgMTZRMTM4IC0xMSAxMDggLTExUTk1IC0xMSA4NyAtNVQ3NiA3VDc0IDE3UTc0IDMwIDExNCAxODlUMTU0IDM2NlExNTQgNDA1IDEyOCA0MDVRMTA3IDQwNSA5MiAzNzdUNjggMzE2VDU3IDI4MFE1NSAyNzggNDEgMjc4SDI3UTIxIDI4NCAyMSAyODdaIj48L3BhdGg+CjxwYXRoIHN0cm9rZS13aWR0aD0iMSIgaWQ9IkUxLU1KTUFUSEktNzQiIGQ9Ik0yNiAzODVRMTkgMzkyIDE5IDM5NVExOSAzOTkgMjIgNDExVDI3IDQyNVEyOSA0MzAgMzYgNDMwVDg3IDQzMUgxNDBMMTU5IDUxMVExNjIgNTIyIDE2NiA1NDBUMTczIDU2NlQxNzkgNTg2VDE4NyA2MDNUMTk3IDYxNVQyMTEgNjI0VDIyOSA2MjZRMjQ3IDYyNSAyNTQgNjE1VDI2MSA1OTZRMjYxIDU4OSAyNTIgNTQ5VDIzMiA0NzBMMjIyIDQzM1EyMjIgNDMxIDI3MiA0MzFIMzIzUTMzMCA0MjQgMzMwIDQyMFEzMzAgMzk4IDMxNyAzODVIMjEwTDE3NCAyNDBRMTM1IDgwIDEzNSA2OFExMzUgMjYgMTYyIDI2UTE5NyAyNiAyMzAgNjBUMjgzIDE0NFEyODUgMTUwIDI4OCAxNTFUMzAzIDE1M0gzMDdRMzIyIDE1MyAzMjIgMTQ1UTMyMiAxNDIgMzE5IDEzM1EzMTQgMTE3IDMwMSA5NVQyNjcgNDhUMjE2IDZUMTU1IC0xMVExMjUgLTExIDk4IDRUNTkgNTZRNTcgNjQgNTcgODNWMTAxTDkyIDI0MVExMjcgMzgyIDEyOCAzODNRMTI4IDM4NSA3NyAzODVIMjZaIj48L3BhdGg+CjxwYXRoIHN0cm9rZS13aWR0aD0iMSIgaWQ9IkUxLU1KTUFUSEktNjQiIGQ9Ik0zNjYgNjgzUTM2NyA2ODMgNDM4IDY4OFQ1MTEgNjk0UTUyMyA2OTQgNTIzIDY4NlE1MjMgNjc5IDQ1MCAzODRUMzc1IDgzVDM3NCA2OFEzNzQgMjYgNDAyIDI2UTQxMSAyNyA0MjIgMzVRNDQzIDU1IDQ2MyAxMzFRNDY5IDE1MSA0NzMgMTUyUTQ3NSAxNTMgNDgzIDE1M0g0ODdINDkxUTUwNiAxNTMgNTA2IDE0NVE1MDYgMTQwIDUwMyAxMjlRNDkwIDc5IDQ3MyA0OFQ0NDUgOFQ0MTcgLThRNDA5IC0xMCAzOTMgLTEwUTM1OSAtMTAgMzM2IDVUMzA2IDM2TDMwMCA1MVEyOTkgNTIgMjk2IDUwUTI5NCA0OCAyOTIgNDZRMjMzIC0xMCAxNzIgLTEwUTExNyAtMTAgNzUgMzBUMzMgMTU3UTMzIDIwNSA1MyAyNTVUMTAxIDM0MVExNDggMzk4IDE5NSA0MjBUMjgwIDQ0MlEzMzYgNDQyIDM2NCA0MDBRMzY5IDM5NCAzNjkgMzk2UTM3MCA0MDAgMzk2IDUwNVQ0MjQgNjE2UTQyNCA2MjkgNDE3IDYzMlQzNzggNjM3SDM1N1EzNTEgNjQzIDM1MSA2NDVUMzUzIDY2NFEzNTggNjgzIDM2NiA2ODNaTTM1MiAzMjZRMzI5IDQwNSAyNzcgNDA1UTI0MiA0MDUgMjEwIDM3NFQxNjAgMjkzUTEzMSAyMTQgMTE5IDEyOVExMTkgMTI2IDExOSAxMThUMTE4IDEwNlExMTggNjEgMTM2IDQ0VDE3OSAyNlEyMzMgMjYgMjkwIDk4TDI5OCAxMDlMMzUyIDMyNloiPjwvcGF0aD4KPHBhdGggc3Ryb2tlLXdpZHRoPSIxIiBpZD0iRTEtTUpNQUlOLTIyIiBkPSJNMzQgNjM0UTM0IDY1OSA1MCA2NzZUOTMgNjk0UTEyMSA2OTQgMTQ0IDY2OFQxNjggNTc5UTE2OCA1MjUgMTQ2IDQ3NlQxMDEgNDAzVDczIDM3OVE2OSAzNzkgNjAgMzg4VDUwIDQwMVE1MCA0MDQgNjIgNDE3VDg4IDQ0OFQxMTYgNTAwVDEzMSA1NzJRMTMxIDU4NCAxMzAgNTg0VDEyNSA1ODFUMTEyIDU3NlQ5NCA1NzNRNjkgNTczIDUyIDU5MFQzNCA2MzRaTTIzOCA2MzRRMjM4IDY1OSAyNTQgNjc2VDI5NyA2OTRRMzI1IDY5NCAzNDggNjY4VDM3MiA1NzlRMzcyIDUyNSAzNTAgNDc2VDMwNSA0MDNUMjc3IDM3OVEyNzMgMzc5IDI2NCAzODhUMjU0IDQwMVEyNTQgNDA0IDI2NiA0MTdUMjkyIDQ0OFQzMjAgNTAwVDMzNSA1NzJRMzM1IDU4NCAzMzQgNTg0VDMyOSA1ODFUMzE2IDU3NlQyOTggNTczUTI3MyA1NzMgMjU2IDU5MFQyMzggNjM0WiI+PC9wYXRoPgo8L2RlZnM+CjxnIHN0cm9rZT0iY3VycmVudENvbG9yIiBmaWxsPSJjdXJyZW50Q29sb3IiIHN0cm9rZS13aWR0aD0iMCIgdHJhbnNmb3JtPSJtYXRyaXgoMSAwIDAgLTEgMCAwKSIgYXJpYS1oaWRkZW49InRydWUiPgogPHVzZSB4bGluazpocmVmPSIjRTEtTUpNQVRISS02OSIgeD0iMCIgeT0iMCI+PC91c2U+CiA8dXNlIHhsaW5rOmhyZWY9IiNFMS1NSk1BVEhJLTZFIiB4PSIzNDUiIHk9IjAiPjwvdXNlPgogPHVzZSB4bGluazpocmVmPSIjRTEtTUpNQVRISS02OCIgeD0iOTQ2IiB5PSIwIj48L3VzZT4KIDx1c2UgeGxpbms6aHJlZj0iI0UxLU1KTUFUSEktNjUiIHg9IjE1MjIiIHk9IjAiPjwvdXNlPgogPHVzZSB4bGluazpocmVmPSIjRTEtTUpNQVRISS03MiIgeD0iMTk4OSIgeT0iMCI+PC91c2U+CiA8dXNlIHhsaW5rOmhyZWY9IiNFMS1NSk1BVEhJLTY5IiB4PSIyNDQwIiB5PSIwIj48L3VzZT4KIDx1c2UgeGxpbms6aHJlZj0iI0UxLU1KTUFUSEktNzQiIHg9IjI3ODYiIHk9IjAiPjwvdXNlPgogPHVzZSB4bGluazpocmVmPSIjRTEtTUpNQVRISS02NSIgeD0iMzE0NyIgeT0iMCI+PC91c2U+CiA8dXNlIHhsaW5rOmhyZWY9IiNFMS1NSk1BVEhJLTY0IiB4PSIzNjE0IiB5PSIwIj48L3VzZT4KIDx1c2UgeGxpbms6aHJlZj0iI0UxLU1KTUFJTi0yMiIgeD0iNDQxNSIgeT0iMCI+PC91c2U+CjwvZz4KPC9zdmc+">PODS_CONFIGURATION_BUILD_DIR/SDWebImage”</p>
-</li>
-<li><ol start="9">
-<li>指定 repo 镜像<br>pod repo remove master<br>pod repo add master <a href="https://links.jianshu.com/go?to=https://gitee.com/mirrors/CocoaPods-Specs">https://gitee.com/mirrors/CocoaPods-Specs</a> （gitee 镜像）<br>pod repo update<br>pod repo remove master<br>pod repo add master <a href="https://links.jianshu.com/go?to=https://mirrors.tuna.tsinghua.edu.cn/git/CocoaPods/Specs.git">https://mirrors.tuna.tsinghua.edu.cn/git/CocoaPods/Specs.git</a> （清华镜像）<br>pod repo update<br>source ‘<a href="https://links.jianshu.com/go?to=https://gitee.com/mirrors/CocoaPods-Specs.git%27">https://gitee.com/mirrors/CocoaPods-Specs.git’</a><br>source ‘<a href="https://links.jianshu.com/go?to=https://mirrors.tuna.tsinghua.edu.cn/git/CocoaPods/Specs.git%27">https://mirrors.tuna.tsinghua.edu.cn/git/CocoaPods/Specs.git’</a></li>
-</ol>
-</li>
-</ul>
-<p>参考文章：<br><a href="https://www.jianshu.com/p/52c5035c9a87">IOS 基础知识 - CocoaPods 原理篇</a></p>
-<p>好文章：<br><a href="https://www.jianshu.com/p/83baebf049b8">CocoaPods</a></p>
-]]></content>
-      <tags>
-        <tag>CocoaPods</tag>
       </tags>
   </entry>
 </search>
