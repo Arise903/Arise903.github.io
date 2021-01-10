@@ -123,7 +123,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">11</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">12</span></a>
 
   </li>
         <li class="menu-item menu-item-tags">
@@ -203,6 +203,163 @@
      transition-duration: 0.15s;
   }
 </style>
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/01/03/iOS-%E7%AC%94%E8%AE%B0-%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8%E7%A7%91%E6%99%AE%E7%AF%87/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Arise">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Arise">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/01/03/iOS-%E7%AC%94%E8%AE%B0-%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8%E7%A7%91%E6%99%AE%E7%AF%87/" class="post-title-link" itemprop="url">iOS 笔记 - 数据存储科普篇</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-01-03 14:12:41" itemprop="dateCreated datePublished" datetime="2021-01-03T14:12:41+08:00">2021-01-03</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-01-08 09:19:59" itemprop="dateModified" datetime="2021-01-08T09:19:59+08:00">2021-01-08</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/iOS%E5%BC%80%E5%8F%91/" itemprop="url" rel="index"><span itemprop="name">iOS开发</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2021/01/03/iOS-%E7%AC%94%E8%AE%B0-%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8%E7%A7%91%E6%99%AE%E7%AF%87/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2021/01/03/iOS-%E7%AC%94%E8%AE%B0-%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8%E7%A7%91%E6%99%AE%E7%AF%87/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <blockquote>
+<h3 id="数据存储"><a href="#数据存储" class="headerlink" title="数据存储"></a>数据存储</h3></blockquote>
+<p>将数据保存到手机里面，保存到应用沙盒（app 安装到手机上的文件夹）<br><strong>常见方式有以下几种：</strong><br>1.XML 属性列表（plist）归档<br>2.Preference(偏好设置)<br>3.NSKeyedArchiver 归档 (NSCoding)<br>4.SQLite3<br>5.Core Data</p>
+<h4 id="应用沙盒"><a href="#应用沙盒" class="headerlink" title="应用沙盒"></a>应用沙盒</h4><ul>
+<li><p>  每个 iOS 应用都有自己的应用沙盒 (应用沙盒就是文件系统目录)，与其他文件系统隔离。应用必须待在自己的沙盒里，其他应用不能访问该沙盒</p>
+</li>
+<li><p>应用沙盒结构分析（文件夹分析）：</p>
+<ul>
+<li><p>  <code>Documents</code>：保存应用运行时生成的需要持久化的数据，iTunes 同步设备时会备份该目录。例如，游戏应用可将游戏存档保存在该目录</p>
+</li>
+<li><p>  <code>tmp</code>：保存应用运行时所需的临时数据，使用完毕后再将相应的文件从该目录删除。应用没有运行时，系统也可能会清除该目录下的文件。iTunes 同步设备时不会备份该目录</p>
+</li>
+<li><p>  <code>Library/Caches</code>：保存应用运行时生成的需要持久化的数据，iTunes 同步设备时不会备份该目录。一般存储体积大、不需要备份的非重要数据</p>
+</li>
+<li><p>  <code>Library/Preference</code>：保存应用的所有偏好设置，iOS 的 Settings(设置) 应用会在该目录中查找应用的设置信息。iTunes 同步设备时会备份该目录</p>
+</li>
+</ul>
+</li>
+<li><p>应用沙盒目录的常见获取方式</p>
+<ul>
+<li><p><strong>沙盒根目录</strong>：</p>
+<ul>
+<li>  <code>NSString * home = NSHomeDirectory();</code></li>
+</ul>
+</li>
+<li><p><strong>Documents:(两种方式)</strong></p>
+<ul>
+<li><ol>
+<li>利用沙盒根目录拼接<code>“Documents”</code>字符串 (不建议使用)</li>
+</ol>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 不建议采用，因为新版本的操作系统可能会修改目录名</span><br><span class="line">NSString *home &#x3D; NSHomeDirectory();</span><br><span class="line">NSString *documents &#x3D; [home stringByAppendingPathComponent:@&quot;Documents&quot;];</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">*  2.利用&#96;NSSearchPathForDirectoriesInDomains&#96;函数</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; NSUserDomainMask 代表从用户文件夹下找</span><br><span class="line">&#x2F;&#x2F; YES 代表展开路径中的波浪字符“~”</span><br><span class="line">NSArray *array &#x3D;  NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, NO);</span><br><span class="line">&#x2F;&#x2F; 在iOS中，只有一个目录跟传入的参数匹配，所以这个集合里面只有一个元素</span><br><span class="line">NSString *documents &#x3D; [array objectAtIndex:0];</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>tmp:</strong></p>
+<ul>
+<li>  <code>NSString *tmp = NSTemporaryDirectory();</code></li>
+</ul>
+</li>
+<li><p><strong>Library/Caches：(跟 Documents 类似的 2 种方法)</strong></p>
+<ul>
+<li><ol>
+<li>利用沙盒根目录拼接<code>”Caches”</code>字符串</li>
+</ol>
+</li>
+<li><ol start="2">
+<li>利用<code>NSSearchPathForDirectoriesInDomains</code>函数 (将函数的第 2 个参数改为：<code>NSCachesDirectory</code>即可)</li>
+</ol>
+</li>
+</ul>
+</li>
+<li><p><strong>Library/Preference</strong>：</p>
+<ul>
+<li>  通过<code>NSUserDefaults</code>类存取该目录下的设置信息</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/01/03/iOS-%E7%AC%94%E8%AE%B0-%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8%E7%A7%91%E6%99%AE%E7%AF%87/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
 
       
   
@@ -382,7 +539,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">11</span>
+          <span class="site-state-item-count">12</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -451,7 +608,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共29.7k字</span>
+  <span class="post-count">博客全站共32.2k字</span>
 </div>
 
         
