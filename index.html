@@ -123,7 +123,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">16</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">17</span></a>
 
   </li>
         <li class="menu-item menu-item-tags">
@@ -203,6 +203,106 @@
      transition-duration: 0.15s;
   }
 </style>
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/01/15/%E6%83%B3%E8%BF%9B%E5%A4%A7%E5%8E%82%E5%98%9B%EF%BC%9F%E8%BF%99%E9%87%8C%E6%9C%89%E4%B8%80%E4%BB%BD%E9%80%9A%E5%85%B3%E7%A7%98%E7%B1%8D%EF%BC%9AiOS-%E5%A4%A7%E5%8E%82%E9%9D%A2%E8%AF%95%E5%AE%9D%E5%85%B8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Arise">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Arise">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/01/15/%E6%83%B3%E8%BF%9B%E5%A4%A7%E5%8E%82%E5%98%9B%EF%BC%9F%E8%BF%99%E9%87%8C%E6%9C%89%E4%B8%80%E4%BB%BD%E9%80%9A%E5%85%B3%E7%A7%98%E7%B1%8D%EF%BC%9AiOS-%E5%A4%A7%E5%8E%82%E9%9D%A2%E8%AF%95%E5%AE%9D%E5%85%B8/" class="post-title-link" itemprop="url">想进大厂嘛？这里有一份通关秘籍：iOS 大厂面试宝典</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2021-01-15 20:30:25 / 修改时间：20:31:40" itemprop="dateCreated datePublished" datetime="2021-01-15T20:30:25+08:00">2021-01-15</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/iOS%E5%BC%80%E5%8F%91/" itemprop="url" rel="index"><span itemprop="name">iOS开发</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2021/01/15/%E6%83%B3%E8%BF%9B%E5%A4%A7%E5%8E%82%E5%98%9B%EF%BC%9F%E8%BF%99%E9%87%8C%E6%9C%89%E4%B8%80%E4%BB%BD%E9%80%9A%E5%85%B3%E7%A7%98%E7%B1%8D%EF%BC%9AiOS-%E5%A4%A7%E5%8E%82%E9%9D%A2%E8%AF%95%E5%AE%9D%E5%85%B8/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2021/01/15/%E6%83%B3%E8%BF%9B%E5%A4%A7%E5%8E%82%E5%98%9B%EF%BC%9F%E8%BF%99%E9%87%8C%E6%9C%89%E4%B8%80%E4%BB%BD%E9%80%9A%E5%85%B3%E7%A7%98%E7%B1%8D%EF%BC%9AiOS-%E5%A4%A7%E5%8E%82%E9%9D%A2%E8%AF%95%E5%AE%9D%E5%85%B8/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><strong>1、NSArray 与 NSSet 的区别？</strong></p>
+<ul>
+<li>  NSArray 内存中存储地址连续，而 NSSet 不连续</li>
+<li>  NSSet 效率高，内部使用 hash 查找；NSArray 查找需要遍历</li>
+<li>  NSSet 通过 anyObject 访问元素，NSArray 通过下标访问</li>
+</ul>
+<p><strong>2、NSHashTable 与 NSMapTable？</strong></p>
+<ul>
+<li>  NSHashTable 是 NSSet 的通用版本，对元素弱引用，可变类型；可以在访问成员时 copy</li>
+<li>  NSMapTable 是 NSDictionary 的通用版本，对元素弱引用，可变类型；可以在访问成员时 copy</li>
+</ul>
+<p>(注：NSHashTable 与 NSSet 的区别：NSHashTable 可以通过 option 设置元素弱引用 / copyin，只有可变类型。但是添加对象的时候 NSHashTable 耗费时间是 NSSet 的两倍。<br>NSMapTable 与 NSDictionary 的区别：同上)</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/01/15/%E6%83%B3%E8%BF%9B%E5%A4%A7%E5%8E%82%E5%98%9B%EF%BC%9F%E8%BF%99%E9%87%8C%E6%9C%89%E4%B8%80%E4%BB%BD%E9%80%9A%E5%85%B3%E7%A7%98%E7%B1%8D%EF%BC%9AiOS-%E5%A4%A7%E5%8E%82%E9%9D%A2%E8%AF%95%E5%AE%9D%E5%85%B8/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
 
       
   
@@ -1148,112 +1248,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/01/08/iOS-%E9%9D%A2%E8%AF%95%E9%A2%98%20%20runloop%EF%BC%88%E5%A4%AF%E5%AE%9E%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E6%B8%A9%E6%95%85%E7%9F%A5%E6%96%B03%EF%BC%89/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="Arise">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Arise">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/01/08/iOS-%E9%9D%A2%E8%AF%95%E9%A2%98%20%20runloop%EF%BC%88%E5%A4%AF%E5%AE%9E%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E6%B8%A9%E6%95%85%E7%9F%A5%E6%96%B03%EF%BC%89/" class="post-title-link" itemprop="url">iOS-面试题 runloop（夯实基础学习笔记-温故知新3）</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2021-01-08 10:13:33 / 修改时间：10:20:42" itemprop="dateCreated datePublished" datetime="2021-01-08T10:13:33+08:00">2021-01-08</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/iOS%E5%BC%80%E5%8F%91/" itemprop="url" rel="index"><span itemprop="name">iOS开发</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2021/01/08/iOS-%E9%9D%A2%E8%AF%95%E9%A2%98%20%20runloop%EF%BC%88%E5%A4%AF%E5%AE%9E%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E6%B8%A9%E6%95%85%E7%9F%A5%E6%96%B03%EF%BC%89/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2021/01/08/iOS-%E9%9D%A2%E8%AF%95%E9%A2%98%20%20runloop%EF%BC%88%E5%A4%AF%E5%AE%9E%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E6%B8%A9%E6%95%85%E7%9F%A5%E6%96%B03%EF%BC%89/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <blockquote>
-<p>讲讲 RunLoop，项目中有用到吗？<br>runloop 内部实现逻辑？<br>runloop 和线程的关系？<br>timer 与 runloop 的关系？<br>程序中添加每 3 秒响应一次的 NSTimer，当拖动 tableview 时 timer 可能无法响应要怎么解决？<br>runloop 是怎么响应用户操作的， 具体流程是什么样的？<br>说说 runLoop 的几种状态<br>runloop 的 mode 作用是什么？</p>
-</blockquote>
-<h4 id="1-什么是-runloop？"><a href="#1-什么是-runloop？" class="headerlink" title="1. 什么是 runloop？"></a>1. 什么是 runloop？</h4><ul>
-<li><p>  运行循环</p>
-</li>
-<li><p>  在程序运行过程中循环做一些事情</p>
-</li>
-<li><p>应用范畴</p>
-<ul>
-<li>  定时器（Timer）、PerformSelector</li>
-<li>  GCD Async Main Queue</li>
-<li>  事件响应、手势识别、界面刷新</li>
-<li>  网络请求</li>
-<li>  AutoreleasePool</li>
-</ul>
-</li>
-</ul>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/01/08/iOS-%E9%9D%A2%E8%AF%95%E9%A2%98%20%20runloop%EF%BC%88%E5%A4%AF%E5%AE%9E%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E6%B8%A9%E6%95%85%E7%9F%A5%E6%96%B03%EF%BC%89/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1326,7 +1320,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">16</span>
+          <span class="site-state-item-count">17</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1395,7 +1389,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共55.4k字</span>
+  <span class="post-count">博客全站共58k字</span>
 </div>
 
         
