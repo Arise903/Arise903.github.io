@@ -208,6 +208,100 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/01/16/iOS14-%E9%80%82%E9%85%8D%E6%96%B0-iPhone-12-%E5%9B%9B%E7%A7%8D%E6%9C%BA%E5%9E%8B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Arise">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Arise">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/01/16/iOS14-%E9%80%82%E9%85%8D%E6%96%B0-iPhone-12-%E5%9B%9B%E7%A7%8D%E6%9C%BA%E5%9E%8B/" class="post-title-link" itemprop="url">iOS14-适配新 iPhone 12 四种机型</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2021-01-16 19:21:47 / 修改时间：19:23:06" itemprop="dateCreated datePublished" datetime="2021-01-16T19:21:47+08:00">2021-01-16</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/iOS%E5%BC%80%E5%8F%91/" itemprop="url" rel="index"><span itemprop="name">iOS开发</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2021/01/16/iOS14-%E9%80%82%E9%85%8D%E6%96%B0-iPhone-12-%E5%9B%9B%E7%A7%8D%E6%9C%BA%E5%9E%8B/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2021/01/16/iOS14-%E9%80%82%E9%85%8D%E6%96%B0-iPhone-12-%E5%9B%9B%E7%A7%8D%E6%9C%BA%E5%9E%8B/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="1、适配新-iPhone-12-四种机型"><a href="#1、适配新-iPhone-12-四种机型" class="headerlink" title="1、适配新 iPhone 12 四种机型"></a>1、适配新 iPhone 12 四种机型</h1><p>新增四种机型。整理的表格如下：</p>
+<table><thead><tr><th>机型</th><th>物理分辨率 (pixel)</th><th>逻辑分辨率 (point)</th><th>像素密度 (PPI)</th><th>缩放因子 (切图规格)</th></tr></thead><tbody><tr><td>iPhone 12</td><td>1170 × 2532</td><td>390 × 844</td><td>460</td><td>@3x</td></tr><tr><td>iPhone 12 Pro</td><td>1170 × 2532</td><td>390 × 844</td><td>460</td><td>@3x</td></tr><tr><td>iPhone 12 mini</td><td>1125 × 2436 (1080 × 2340)</td><td>375 × 812</td><td>476</td><td>@3x（2.88x）</td></tr><tr><td>iPhone 12 Pro Max</td><td>1284 × 2778</td><td>428 × 926</td><td>458</td><td>@3x</td></tr><tr><td>iPhone XR</td><td>828 × 1792</td><td>414 × 896</td><td>326</td><td>@2x</td></tr><tr><td>iPhone 11</td><td>828 × 1792</td><td>414 × 896</td><td>326</td><td>@2x</td></tr><tr><td>iPhone 11 Pro</td><td>1125 × 2436</td><td>375 × 812</td><td>458</td><td>@3x</td></tr><tr><td>iPhone 11Pro Max</td><td>1242 × 2688</td><td>414 × 896</td><td>458</td><td>@3x</td></tr><tr><td>iPhone 8</td><td>750 × 1334</td><td>375 × 667</td><td>326</td><td>@2x</td></tr><tr><td>iPhone 8 Plus</td><td>1242 × 2208 (1080 × 1920)</td><td>414 × 736</td><td>401</td><td>@3x（2.62x）</td></tr><tr><td>iPhone 5s</td><td>640 × 1136</td><td>320 × 568</td><td>326</td><td>@2x</td></tr></tbody></table>
+
+<p><strong>注意：iPhone 12 mini 与 iPhone 6 Plus 机型一样，先由标准的 3X，然后系统转成的 2.88X / 2.62X.</strong></p>
+<p><strong>iPhone 12 mini 逻辑分辨率 375 × 812 ，物理分辨率为 1125 × 2436，然后系统转成实际分辨率 1080 × 2340</strong></p>
+<p><strong>iPhone 8 Plus 逻辑分辨率 414 × 736 ，物理分辨率为 1242 × 2208，然后系统转成实际分辨率 1080 × 1920</strong></p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/01/16/iOS14-%E9%80%82%E9%85%8D%E6%96%B0-iPhone-12-%E5%9B%9B%E7%A7%8D%E6%9C%BA%E5%9E%8B/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/2021/01/15/%E6%83%B3%E8%BF%9B%E5%A4%A7%E5%8E%82%E5%98%9B%EF%BC%9F%E8%BF%99%E9%87%8C%E6%9C%89%E4%B8%80%E4%BB%BD%E9%80%9A%E5%85%B3%E7%A7%98%E7%B1%8D%EF%BC%9AiOS-%E5%A4%A7%E5%8E%82%E9%9D%A2%E8%AF%95%E5%AE%9D%E5%85%B8/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -231,10 +325,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2021-01-15 20:30:25 / 修改时间：20:31:40" itemprop="dateCreated datePublished" datetime="2021-01-15T20:30:25+08:00">2021-01-15</time>
+              <time title="创建时间：2021-01-15 20:30:25" itemprop="dateCreated datePublished" datetime="2021-01-15T20:30:25+08:00">2021-01-15</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-01-16 19:29:43" itemprop="dateModified" datetime="2021-01-16T19:29:43+08:00">2021-01-16</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -270,14 +370,12 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p><strong>1、NSArray 与 NSSet 的区别？</strong></p>
-<ul>
+          <h1 id="1、NSArray-与-NSSet-的区别？"><a href="#1、NSArray-与-NSSet-的区别？" class="headerlink" title="1、NSArray 与 NSSet 的区别？"></a><strong>1、NSArray 与 NSSet 的区别？</strong></h1><ul>
 <li>  NSArray 内存中存储地址连续，而 NSSet 不连续</li>
 <li>  NSSet 效率高，内部使用 hash 查找；NSArray 查找需要遍历</li>
 <li>  NSSet 通过 anyObject 访问元素，NSArray 通过下标访问</li>
 </ul>
-<p><strong>2、NSHashTable 与 NSMapTable？</strong></p>
-<ul>
+<h1 id="2、NSHashTable-与-NSMapTable？"><a href="#2、NSHashTable-与-NSMapTable？" class="headerlink" title="2、NSHashTable 与 NSMapTable？"></a><strong>2、NSHashTable 与 NSMapTable？</strong></h1><ul>
 <li>  NSHashTable 是 NSSet 的通用版本，对元素弱引用，可变类型；可以在访问成员时 copy</li>
 <li>  NSMapTable 是 NSDictionary 的通用版本，对元素弱引用，可变类型；可以在访问成员时 copy</li>
 </ul>
@@ -688,10 +786,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2021-01-12 19:13:58 / 修改时间：19:15:52" itemprop="dateCreated datePublished" datetime="2021-01-12T19:13:58+08:00">2021-01-12</time>
+              <time title="创建时间：2021-01-12 19:13:58" itemprop="dateCreated datePublished" datetime="2021-01-12T19:13:58+08:00">2021-01-12</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-01-16 19:46:23" itemprop="dateModified" datetime="2021-01-16T19:46:23+08:00">2021-01-16</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -727,117 +831,13 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>更新至 iPhone 11<br>[转]<br>添加了 iphone12 的设备</p>
-<blockquote>
-<p>为了统计用户信息、下发广告，服务器端往往需要手机用户设备及 app 的各种信息，下面讲述一下各种信息的获取方式：</p>
-</blockquote>
-<ul>
+          <h1 id="1-为了统计用户信息、下发广告，服务器端往往需要手机用户设备及-app-的各种信息，下面讲述一下各种信息的获取方式："><a href="#1-为了统计用户信息、下发广告，服务器端往往需要手机用户设备及-app-的各种信息，下面讲述一下各种信息的获取方式：" class="headerlink" title="1.为了统计用户信息、下发广告，服务器端往往需要手机用户设备及 app 的各种信息，下面讲述一下各种信息的获取方式："></a>1.为了统计用户信息、下发广告，服务器端往往需要手机用户设备及 app 的各种信息，下面讲述一下各种信息的获取方式：</h1><ul>
 <li>  一行代码就搞定的统一来！</li>
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 这个方法后面会列出来</span><br><span class="line">    NSString *deviceName &#x3D; [self getDeviceName];</span><br><span class="line">    NSLog(@&quot;设备型号--&gt;%@&quot;, deviceName);</span><br><span class="line"></span><br><span class="line">    NSString *iPhoneName &#x3D; [UIDevice currentDevice].name;</span><br><span class="line">    NSLog(@&quot;iPhone名称--&gt;%@&quot;, iPhoneName); </span><br><span class="line"></span><br><span class="line">    NSString *appVerion &#x3D; [[[NSBundle mainBundle] infoDictionary] objectForKey:@&quot;CFBundleShortVersionString&quot;];</span><br><span class="line">    NSLog(@&quot;app版本号--&gt;%@&quot;, appVerion);</span><br><span class="line"></span><br><span class="line">    CGFloat batteryLevel &#x3D; [[UIDevice currentDevice] batteryLevel];</span><br><span class="line">    NSLog(@&quot;电池电量--&gt;%f&quot;, batteryLevel);</span><br><span class="line"></span><br><span class="line">    NSString *localizedModel &#x3D; [UIDevice currentDevice].localizedModel;</span><br><span class="line">    NSLog(@&quot;localizedModel--&gt;%@&quot;, localizedModel);</span><br><span class="line"></span><br><span class="line">    NSString *systemName &#x3D; [UIDevice currentDevice].systemName;</span><br><span class="line">    NSLog(@&quot;当前系统名称--&gt;%@&quot;, systemName);</span><br><span class="line"></span><br><span class="line">    NSString *systemVersion &#x3D; [UIDevice currentDevice].systemVersion;</span><br><span class="line">    NSLog(@&quot;当前系统版本号--&gt;%@&quot;, systemVersion);</span><br><span class="line"></span><br><span class="line">    struct utsname systemInfo;</span><br><span class="line">    uname(&amp;systemInfo);</span><br><span class="line">    NSString *device_model &#x3D; [NSString stringWithCString:systemInfo.machine encoding:NSUTF8StringEncoding];</span><br><span class="line">    NSLog(@&quot;device_model--&gt;%@&quot;, device_model);</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; 这个方法后面会单独列出</span><br><span class="line">    NSString *macAddress &#x3D; [self getMacAddress];</span><br><span class="line">    NSLog(@&quot;macAddress--&gt;%@&quot;, macAddress);</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; 这个方法后面会单独列出</span><br><span class="line">    NSString *deviceIP &#x3D; [self getDeviceIPAddresses];</span><br><span class="line">    NSLog(@&quot;deviceIP--&gt;%@&quot;, deviceIP);</span><br><span class="line"></span><br><span class="line">   &#x2F;&#x2F; 设备上次重启的时间</span><br><span class="line">   NSTimeInterval time &#x3D; [[NSProcessInfo processInfo] systemUptime];</span><br><span class="line">   NSDate *lastRestartDate &#x3D; [[NSDate alloc] initWithTimeIntervalSinceNow:(0 - time)];</span><br></pre></td></tr></table></figure>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2021/01/12/%E5%8F%B2%E4%B8%8A%E6%9C%80%E5%85%A8%E7%9A%84-iOS-%E5%90%84%E7%A7%8D%E8%AE%BE%E5%A4%87%E4%BF%A1%E6%81%AF%E8%8E%B7%E5%8F%96%E6%80%BB%E7%BB%93-iPhone-12-%E5%B7%B2%E6%9B%B4%E6%96%B0/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/01/10/2020-%E5%B9%B4%E9%9D%A2%E8%AF%95%EF%BC%9A%E6%95%B4%E7%90%86%E5%87%BA%E4%B8%80%E4%BB%BD%E9%AB%98%E7%BA%A7-iOS-%E9%9D%A2%E8%AF%95%E9%A2%98/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="Arise">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Arise">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/01/10/2020-%E5%B9%B4%E9%9D%A2%E8%AF%95%EF%BC%9A%E6%95%B4%E7%90%86%E5%87%BA%E4%B8%80%E4%BB%BD%E9%AB%98%E7%BA%A7-iOS-%E9%9D%A2%E8%AF%95%E9%A2%98/" class="post-title-link" itemprop="url">2020 年面试：整理出一份高级 iOS 面试题</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2021-01-10 19:45:54 / 修改时间：19:58:40" itemprop="dateCreated datePublished" datetime="2021-01-10T19:45:54+08:00">2021-01-10</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/iOS%E5%BC%80%E5%8F%91/" itemprop="url" rel="index"><span itemprop="name">iOS开发</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2021/01/10/2020-%E5%B9%B4%E9%9D%A2%E8%AF%95%EF%BC%9A%E6%95%B4%E7%90%86%E5%87%BA%E4%B8%80%E4%BB%BD%E9%AB%98%E7%BA%A7-iOS-%E9%9D%A2%E8%AF%95%E9%A2%98/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2021/01/10/2020-%E5%B9%B4%E9%9D%A2%E8%AF%95%EF%BC%9A%E6%95%B4%E7%90%86%E5%87%BA%E4%B8%80%E4%BB%BD%E9%AB%98%E7%BA%A7-iOS-%E9%9D%A2%E8%AF%95%E9%A2%98/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p><strong>1、NSArray 与 NSSet 的区别？</strong></p>
-<ul>
-<li>  NSArray 内存中存储地址连续，而 NSSet 不连续</li>
-<li>  NSSet 效率高，内部使用 hash 查找；NSArray 查找需要遍历</li>
-<li>  NSSet 通过 anyObject 访问元素，NSArray 通过下标访问</li>
-</ul>
-<p><strong>2、NSHashTable 与 NSMapTable？</strong></p>
-<ul>
-<li>  NSHashTable 是 NSSet 的通用版本，对元素弱引用，可变类型；可以在访问成员时 copy</li>
-<li>  NSMapTable 是 NSDictionary 的通用版本，对元素弱引用，可变类型；可以在访问成员时 copy</li>
-</ul>
-<p>(注：NSHashTable 与 NSSet 的区别：NSHashTable 可以通过 option 设置元素弱引用 / copyin，只有可变类型。但是添加对象的时候 NSHashTable 耗费时间是 NSSet 的两倍。<br>NSMapTable 与 NSDictionary 的区别：同上)</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/01/10/2020-%E5%B9%B4%E9%9D%A2%E8%AF%95%EF%BC%9A%E6%95%B4%E7%90%86%E5%87%BA%E4%B8%80%E4%BB%BD%E9%AB%98%E7%BA%A7-iOS-%E9%9D%A2%E8%AF%95%E9%A2%98/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -1389,7 +1389,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共58k字</span>
+  <span class="post-count">博客全站共56.1k字</span>
 </div>
 
         

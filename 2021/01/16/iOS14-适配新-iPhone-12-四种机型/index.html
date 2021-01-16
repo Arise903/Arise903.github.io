@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/pace-js@1/themes/blue/pace-theme-minimal.css">
+  <script src="//cdn.jsdelivr.net/npm/pace-js@1/pace.min.js"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="1、适配新 iPhone 12 四种机型新增四种机型。整理的表格如下： 机型物理分辨率 (pixel)逻辑分辨率 (point)像素密度 (PPI)缩放因子 (切图规格)iPhone 121170 × 2532390 × 844460@3xiPhone 12 Pro1170 × 2532390 × 844460@3xiPhone 12 mini1125 × 2436 (1080 × 2340)37">
+<meta property="og:type" content="article">
+<meta property="og:title" content="iOS14-适配新 iPhone 12 四种机型">
+<meta property="og:url" content="http://example.com/2021/01/16/iOS14-%E9%80%82%E9%85%8D%E6%96%B0-iPhone-12-%E5%9B%9B%E7%A7%8D%E6%9C%BA%E5%9E%8B/index.html">
+<meta property="og:site_name" content="Arise">
+<meta property="og:description" content="1、适配新 iPhone 12 四种机型新增四种机型。整理的表格如下： 机型物理分辨率 (pixel)逻辑分辨率 (point)像素密度 (PPI)缩放因子 (切图规格)iPhone 121170 × 2532390 × 844460@3xiPhone 12 Pro1170 × 2532390 × 844460@3xiPhone 12 mini1125 × 2436 (1080 × 2340)37">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-01-16T11:21:47.000Z">
+<meta property="article:modified_time" content="2021-01-16T11:23:06.063Z">
+<meta property="article:author" content="Arise">
+<meta property="article:tag" content="iOS 笔记">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/2021/01/16/iOS14-%E9%80%82%E9%85%8D%E6%96%B0-iPhone-12-%E5%9B%9B%E7%A7%8D%E6%9C%BA%E5%9E%8B/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>iOS14-适配新 iPhone 12 四种机型 | Arise</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="Arise" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Arise</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">1</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">17</span></a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">4</span></a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/01/16/iOS14-%E9%80%82%E9%85%8D%E6%96%B0-iPhone-12-%E5%9B%9B%E7%A7%8D%E6%9C%BA%E5%9E%8B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Arise">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Arise">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          iOS14-适配新 iPhone 12 四种机型
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2021-01-16 19:21:47 / 修改时间：19:23:06" itemprop="dateCreated datePublished" datetime="2021-01-16T19:21:47+08:00">2021-01-16</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/iOS%E5%BC%80%E5%8F%91/" itemprop="url" rel="index"><span itemprop="name">iOS开发</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2021/01/16/iOS14-%E9%80%82%E9%85%8D%E6%96%B0-iPhone-12-%E5%9B%9B%E7%A7%8D%E6%9C%BA%E5%9E%8B/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2021/01/16/iOS14-%E9%80%82%E9%85%8D%E6%96%B0-iPhone-12-%E5%9B%9B%E7%A7%8D%E6%9C%BA%E5%9E%8B/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="1、适配新-iPhone-12-四种机型"><a href="#1、适配新-iPhone-12-四种机型" class="headerlink" title="1、适配新 iPhone 12 四种机型"></a>1、适配新 iPhone 12 四种机型</h1><p>新增四种机型。整理的表格如下：</p>
+<table><thead><tr><th>机型</th><th>物理分辨率 (pixel)</th><th>逻辑分辨率 (point)</th><th>像素密度 (PPI)</th><th>缩放因子 (切图规格)</th></tr></thead><tbody><tr><td>iPhone 12</td><td>1170 × 2532</td><td>390 × 844</td><td>460</td><td>@3x</td></tr><tr><td>iPhone 12 Pro</td><td>1170 × 2532</td><td>390 × 844</td><td>460</td><td>@3x</td></tr><tr><td>iPhone 12 mini</td><td>1125 × 2436 (1080 × 2340)</td><td>375 × 812</td><td>476</td><td>@3x（2.88x）</td></tr><tr><td>iPhone 12 Pro Max</td><td>1284 × 2778</td><td>428 × 926</td><td>458</td><td>@3x</td></tr><tr><td>iPhone XR</td><td>828 × 1792</td><td>414 × 896</td><td>326</td><td>@2x</td></tr><tr><td>iPhone 11</td><td>828 × 1792</td><td>414 × 896</td><td>326</td><td>@2x</td></tr><tr><td>iPhone 11 Pro</td><td>1125 × 2436</td><td>375 × 812</td><td>458</td><td>@3x</td></tr><tr><td>iPhone 11Pro Max</td><td>1242 × 2688</td><td>414 × 896</td><td>458</td><td>@3x</td></tr><tr><td>iPhone 8</td><td>750 × 1334</td><td>375 × 667</td><td>326</td><td>@2x</td></tr><tr><td>iPhone 8 Plus</td><td>1242 × 2208 (1080 × 1920)</td><td>414 × 736</td><td>401</td><td>@3x（2.62x）</td></tr><tr><td>iPhone 5s</td><td>640 × 1136</td><td>320 × 568</td><td>326</td><td>@2x</td></tr></tbody></table>
+
+<p><strong>注意：iPhone 12 mini 与 iPhone 6 Plus 机型一样，先由标准的 3X，然后系统转成的 2.88X / 2.62X.</strong></p>
+<p><strong>iPhone 12 mini 逻辑分辨率 375 × 812 ，物理分辨率为 1125 × 2436，然后系统转成实际分辨率 1080 × 2340</strong></p>
+<p><strong>iPhone 8 Plus 逻辑分辨率 414 × 736 ，物理分辨率为 1242 × 2208，然后系统转成实际分辨率 1080 × 1920</strong></p>
+<a id="more"></a> 
+
+
+<h1 id="2、iOS14-状态栏高度的改变"><a href="#2、iOS14-状态栏高度的改变" class="headerlink" title="2、iOS14 状态栏高度的改变"></a>2、iOS14 状态栏高度的改变</h1><p>在 iOS14 中无意发现状态栏高度有一定变化，整理如下表格：<br><strong>注意：使用 Xcode12.0.1、Xcode12.1、Xcode12.2 中运行各屏幕模拟器获取的数据。（无 iPhone 12 真机测试 仅供参考，欢迎讨论）</strong></p>
+<table><thead><tr><th>机型</th><th>导航栏高度</th><th>状态栏高度</th><th>标签栏高度</th></tr></thead><tbody><tr><td>iPhone 12</td><td>44pt</td><td><strong>47pt</strong></td><td>49pt</td></tr><tr><td>iPhone 12 Pro</td><td>44pt</td><td><strong>47pt</strong></td><td>49pt</td></tr><tr><td>iPhone 12 mini</td><td>44pt</td><td>44pt</td><td>49pt</td></tr><tr><td>iPhone 12 Pro MAX</td><td>44pt</td><td><strong>47pt</strong></td><td>49pt</td></tr><tr><td>iPhone XR</td><td>44pt</td><td><strong>48pt</strong></td><td>49pt</td></tr><tr><td>iPhone 11</td><td>44pt</td><td><strong>48pt</strong></td><td>49pt</td></tr><tr><td>iPhone 11 Pro</td><td>44pt</td><td>44pt</td><td>49pt</td></tr><tr><td>iPhone 11Pro MAX</td><td>44pt</td><td>44pt</td><td>49pt</td></tr><tr><td>iPhone 8</td><td>44pt</td><td>20pt</td><td>49pt</td></tr><tr><td>iPhone 8 Plus</td><td>44pt</td><td>20pt</td><td>49pt</td></tr><tr><td>iPhone 5s</td><td>44pt</td><td>20pt</td><td>49pt</td></tr></tbody></table>
+
+<h1 id="3、宏定义代码"><a href="#3、宏定义代码" class="headerlink" title="3、宏定义代码"></a>3、宏定义代码</h1><p>使用系统风格，包括导航栏、状态栏、标签栏的宏定义不写死高度。<br><strong>仅供参考，欢迎讨论</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br></pre></td><td class="code"><pre><span class="line">#define iPad (UI_USER_INTERFACE_IDIOM() &#x3D;&#x3D; UIUserInterfaceIdiomPad)</span><br><span class="line">#define iPhone (UI_USER_INTERFACE_IDIOM() &#x3D;&#x3D; UIUserInterfaceIdiomPhone)</span><br><span class="line"></span><br><span class="line">#define kMaxScreenLength (MAX(kScreenWidth, kScreenHeight))</span><br><span class="line">#define kMinScreenLength (MIN(kScreenWidth, kScreenHeight))</span><br><span class="line"></span><br><span class="line">&#x2F;**</span><br><span class="line"> *  屏幕是否是iPhone4</span><br><span class="line"> *          iPhone4S</span><br><span class="line"> *&#x2F;</span><br><span class="line">#define iPhone4 (iPhone &amp;&amp; kMaxScreenLength &#x3D;&#x3D; 480)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#x2F;**</span><br><span class="line"> *  屏幕是否是iPhone 5</span><br><span class="line"> *          iPhone 5S</span><br><span class="line"> *          iPhone SE 1</span><br><span class="line"> *&#x2F;</span><br><span class="line">#define iPhone5 (iPhone &amp;&amp; kMaxScreenLength &#x3D;&#x3D; 568)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#x2F;**</span><br><span class="line"> *  屏幕是否是iPhone 6</span><br><span class="line"> *          iPhone 6S</span><br><span class="line"> *          iPhone 7</span><br><span class="line"> *          iPhone 8</span><br><span class="line"> *          iPhone SE 2</span><br><span class="line"> *&#x2F;</span><br><span class="line">#define iPhone6 (iPhone &amp;&amp; kMaxScreenLength &#x3D;&#x3D; 667)</span><br><span class="line"></span><br><span class="line">&#x2F;**</span><br><span class="line"> *  屏幕是否是iPhone 6 Plus</span><br><span class="line"> *          iPhone 6S Plus</span><br><span class="line"> *          iPhone 7 Plus</span><br><span class="line"> *          iPhone 8 Plus</span><br><span class="line"> *</span><br><span class="line"> *&#x2F;</span><br><span class="line">#define iPhone6Plus (iPhone &amp;&amp; kMaxScreenLength &#x3D;&#x3D; 736)</span><br><span class="line"></span><br><span class="line">&#x2F;**</span><br><span class="line"> *  屏幕是否是iPhone X</span><br><span class="line"> *          iPhone XS</span><br><span class="line"> *          iPhone 11 Pro</span><br><span class="line"> *          iPhone 12 mini</span><br><span class="line"> *&#x2F;</span><br><span class="line">#define iPhoneX (iPhone &amp;&amp; kMaxScreenLength &#x3D;&#x3D; 812)</span><br><span class="line"> </span><br><span class="line">&#x2F;**</span><br><span class="line"> *  屏幕是否是iPhone XR</span><br><span class="line"> *          iPhone XS Max</span><br><span class="line"> *          iPhone 11</span><br><span class="line"> *          iPhone 11 Pro Max</span><br><span class="line"> *&#x2F;</span><br><span class="line">#define iPhoneXSMax (iPhone &amp;&amp; kMaxScreenLength &#x3D;&#x3D; 896)</span><br><span class="line"></span><br><span class="line">&#x2F;**</span><br><span class="line"> *  屏幕是否是iPhone 12</span><br><span class="line"> *&#x2F;</span><br><span class="line">#define iPhone12 (iPhone &amp;&amp; kMaxScreenLength &#x3D;&#x3D; 844)</span><br><span class="line"></span><br><span class="line">&#x2F;**</span><br><span class="line"> *  屏幕是否是iPhone 12 Pro Max</span><br><span class="line"> *&#x2F;</span><br><span class="line">#define iPhone12ProMax  (iPhone &amp;&amp; kMaxScreenLength &#x3D;&#x3D; 926)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#x2F;**</span><br><span class="line"> *  屏幕高度</span><br><span class="line"> *&#x2F;</span><br><span class="line">#define kScreenHeight ([UIScreen mainScreen].bounds.size.height)</span><br><span class="line">&#x2F;**</span><br><span class="line"> *  屏幕宽度</span><br><span class="line"> *&#x2F;</span><br><span class="line">#define kScreenWidth ([UIScreen mainScreen].bounds.size.width)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#x2F;**</span><br><span class="line"> *  状态栏</span><br><span class="line"> *&#x2F;</span><br><span class="line">#define kStatusBarHeight [[UIApplication sharedApplication] statusBarFrame].size.height</span><br><span class="line"></span><br><span class="line">&#x2F;**</span><br><span class="line"> *  导航栏</span><br><span class="line"> *&#x2F;</span><br><span class="line">#define kNavigationBarHeight [[UINavigationController alloc] init].navigationBar.frame.size.height</span><br><span class="line"></span><br><span class="line">&#x2F;**</span><br><span class="line"> *  标签栏</span><br><span class="line"> *&#x2F;</span><br><span class="line">#define kTabBarHeight [[UITabBarController alloc] init].tabBar.frame.size.height</span><br><span class="line"></span><br><span class="line">&#x2F;**</span><br><span class="line"> *  竖屏底部安全区域</span><br><span class="line"> *&#x2F;</span><br><span class="line">#define kSafeAreaHeight \</span><br><span class="line">(&#123;CGFloat bottom&#x3D;0.0;\</span><br><span class="line">if (@available(iOS 11.0, *)) &#123;\</span><br><span class="line">bottom &#x3D; [[UIApplication sharedApplication] delegate].window.safeAreaInsets.bottom;\</span><br><span class="line">&#125; else &#123; \</span><br><span class="line">bottom&#x3D;0;\</span><br><span class="line">&#125;\</span><br><span class="line">(bottom);\</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+    </div>
+
+    
+    
+    
+
+<div>
+  
+    <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+  
+</div>
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/iOS-%E7%AC%94%E8%AE%B0/" rel="tag"><i class="fa fa-tag"></i># iOS 笔记</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/01/15/%E6%83%B3%E8%BF%9B%E5%A4%A7%E5%8E%82%E5%98%9B%EF%BC%9F%E8%BF%99%E9%87%8C%E6%9C%89%E4%B8%80%E4%BB%BD%E9%80%9A%E5%85%B3%E7%A7%98%E7%B1%8D%EF%BC%9AiOS-%E5%A4%A7%E5%8E%82%E9%9D%A2%E8%AF%95%E5%AE%9D%E5%85%B8/" rel="prev" title="想进大厂嘛？这里有一份通关秘籍：iOS 大厂面试宝典">
+      <i class="fa fa-chevron-left"></i> 想进大厂嘛？这里有一份通关秘籍：iOS 大厂面试宝典
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1%E3%80%81%E9%80%82%E9%85%8D%E6%96%B0-iPhone-12-%E5%9B%9B%E7%A7%8D%E6%9C%BA%E5%9E%8B"><span class="nav-number">1.</span> <span class="nav-text">1、适配新 iPhone 12 四种机型</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2%E3%80%81iOS14-%E7%8A%B6%E6%80%81%E6%A0%8F%E9%AB%98%E5%BA%A6%E7%9A%84%E6%94%B9%E5%8F%98"><span class="nav-number">2.</span> <span class="nav-text">2、iOS14 状态栏高度的改变</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3%E3%80%81%E5%AE%8F%E5%AE%9A%E4%B9%89%E4%BB%A3%E7%A0%81"><span class="nav-number">3.</span> <span class="nav-text">3、宏定义代码</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Arise"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">Arise</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">17</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Arise903" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Arise903" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:li13474514659@gmail.com" title="E-Mail → mailto:li13474514659@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://weibo.com/Arise08" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;Arise08" rel="noopener" target="_blank"><i class="fab fa-weibo fa-fw"></i>Weibo</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://instagram.com/arise.li.12" title="Instagram → https:&#x2F;&#x2F;instagram.com&#x2F;arise.li.12" rel="noopener" target="_blank"><i class="fab fa-instagram fa-fw"></i>Instagram</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Arise</span>
+</div>
+
+<!---->
+
+<span id="busuanzi_container_site_uv">
+  本站访问次数：<span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+</span>
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共56.1k字</span>
+</div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+  <script defer src="/lib/three/three.min.js"></script>
+    <script defer src="/lib/three/three-waves.min.js"></script>
+    <script defer src="/lib/three/canvas_lines.min.js"></script>
+    <script defer src="/lib/three/canvas_sphere.min.js"></script>
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : false,
+      notify     : false,
+      appId      : '2e4EG1iiDMWDH41h7EFQyjBy-gzGzoHsz',
+      appKey     : 'Sy8hnfuBbs5vw8Bw0dKNVw8z',
+      placeholder: "Just go go",
+      avatar     : 'mm',
+      meta       : guest,
+      pageSize   : '10' || 10,
+      visitor    : false,
+      lang       : '' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : false,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});
+</script>
+
+
+    
+<script type="text/javascript" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/shizuku.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true}});</script></body>
+</html>
